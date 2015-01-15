@@ -5,831 +5,2404 @@
     <title>西子首页</title>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/home.css"/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.SuperSlide.2.1.1.js"></script>
 </head>
 <body>
+
+<div id="site_nav">
+    <div id="site_nav_bd">
+        <ul class="nav_list">
+            <li class="nav_item"><a href="javascript:void(0)"  title="设为首页" target="_self" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.xizi.com')">设为首页</a><span class="line">|</span></li>
+            <li class="nav_item"><a href="http://www.xizi.com/contact/contact.php" rel="nofollow"  target="_blank">广告联系</a><span class="line">|</span></li>
+            <li class="nav_item"><a href="http://mobile.xizi.com/" target="_blank">手机版</a><span class="line">|</span></li>
+            <li class="nav_item weixin" style="display:inline; margin-left:10px;"><a href="http://bbs.xizi.com/thread-2436716-1-1.html" target="_blank"></a></li>
+        </ul>
+        <ul class="nav_user_handle" id="nav_user_handle"><li>&nbsp;</li></ul>
+    </div>
+</div>
+<script>
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return r[2]; return null;
+	}
+	var form = getQueryString("form");
+	
+	var browser={
+		versions:function(){ 
+		   var u = navigator.userAgent, app = navigator.appVersion; 
+					
+		   return {//移动终端浏览器版本信息 
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+				iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+				iPad: u.indexOf('iPad') > -1, //是否iPad
+				webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+			};
+		 }(),
+         language:(navigator.browserLanguage || navigator.language).toLowerCase()
+	} 
+	if(form !="wap" && browser.versions.mobile){
+		if(!browser.versions.iPad){
+			window.location.href="http://www.xizi.com/m_index.html";
+		}
+    }
+
+    window.mobilecheck = function() {
+    var check = false;
+    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+    return check; }
+</script>
+
 <div class="homeWrap">
-    <div class="pageOne cc">
-        <div class="pageLeft fl">
-            <div id="img_focus" class="img_hot cc">
-                <ul id="img_hot_con" class="tab_content">
-                    <!----><li><a href="http://bbs.xizi.com/thread-3411661-1-1.html" target="_blank"><img width="310" height="350" src="http://bbsimg.xizi.com/attachments/pushpic/20150112031916.jpg" alt="使用路灯杆编号报警，110可快速定位事发点"><span>使用路灯杆编号报警，110可快速定位事发点</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3411215-1-1.html" target="_blank"><img width="310" height="350" src="http://bbsimg.xizi.com/attachments/pushpic/20150112062507.jpg" alt="沙田世外梅园梅花已绽放，那画面美得像幅画"><span>沙田世外梅园梅花已绽放，那画面美得像幅画</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3409276-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111145736.jpg" alt="2015开年第一炮，出海钓鱼就是有鱼任性！"><span>2015开年第一炮，出海钓鱼就是有鱼任性！</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3411094-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111142009.jpg" alt="招牌三杯鸭名不虚传，蒜香牛肉粒滋味喷香"><span>招牌三杯鸭名不虚传，蒜香牛肉粒滋味喷香</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3410213-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111124840.jpg" alt="放假后的校园画面，一个人安静休闲的小时光"><span>放假后的校园画面，一个人安静休闲的小时光</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3411075-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111150041.jpg" alt="漫步土耳其，星球大战原来是在这里拍摄的"><span>漫步土耳其，星球大战原来是在这里拍摄的</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/thread-3410409-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111153653.jpg" alt="SUV汽车到底哪家强？照样侧翻给你看底盘！"><span>SUV汽车到底哪家强？照样侧翻给你看底盘！</span></a><i class="img_bg"></i></li><li><a href="http://bbs.xizi.com/read.php?tid=3410850&mfid=719&mapper=true" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111154713.jpg" alt="组团卖切糕？惠东环城路每隔一百米就有一档"><span>组团卖切糕？惠东环城路每隔一百米就有一档</span></a><i class="img_bg"></i></li><!---->
+<div class="top_md">
+    <div id="slide_ad">
+        <a target="_blank" href="http://app.xizi.com/click/22974" id="bigImg"><img border="0" src="http://house.xizi.com/a/2014/09/zx/1000_300.jpg?RsgTum" width="1000" height="300" /></a>
+        <!--XIZI-->
+    </div>
+    <!--XIZI-->
+    <!-- 顶部图片 -->
+    <div style="margin: 10px auto 0; width:1000px;">
+        <a href="http://app.xizi.com/click/22521" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0831/20140831032921246.gif?SScsXs" width="1000" height="35" border="0" /></a>
+        <a href="http://app.xizi.com/click/22541" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0903/20140903103036512.gif?pEB1IH" width="1000" height="35" border="0" /></a>
+    </div>
+    <!--顶部小横条-->
+</div>
+
+<div class="head">
+<div class="head_main cc">
+    <div class="logo_box">
+        <h1 class="hide">惠州西子湖畔</h1>
+        <a href="http://www.xizi.com" class="logo">西子湖畔</a>
+        <div class="city_info">
+            <a class="city">惠州</a>
+            <dl class="J_dropdown">
+                <dt>[切换]</dt>
+                <dd class="dd_content">
+                    <a href="http://hd.xizi.com/">惠东</a>
+                    <a href="http://hy.xizi.com/">惠阳</a>
+                    <a class="last" href="http://zkbd.xizi.com">仲恺</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="top_search">
+        <div id="search_nav">
+            <a class="nav_item current">找美食</a>
+            <a class="nav_item">找话题</a>
+            <a class="nav_item">找房子</a>
+            <a class="nav_item">找工作</a>
+            <a class="nav_item" href="http://www.1chewu.com/" target="_blank" rel="nofollow">查违章</a>
+        </div>
+        <ul id="search_bd">
+            <li class="search_item first cc"><!--找美食-->
+                <i class="i"></i>
+                <form method="post" action="http://bbs.xizi.com/searcher.php" target="_blank">
+                    <div class="context">
+                        <input type="text" id="search_food" name="keyword" value=""/>
+                    </div>
+                    <input type="submit" value="找餐厅"  class="submit food-submit" />
+                    <input type="hidden" name="verify" value="a3b7a6ed" />
+                    <input type="hidden" name="step" value="2" />
+                    <input type="hidden" name="type" id="search_type" value="thread" />
+                </form>
+            </li>
+            <li class="search_item cc"><!--找话题-->
+                <i class="i"></i>
+                <form method="post" action="http://bbs.xizi.com/searcher.php" target="_blank">
+                    <div class="context">
+                        <input type="text" id="search_topic" name="keyword" value=""/>
+                    </div>
+                    <input type="submit" value="搜索" id="topic_btn" class="submit" />
+                    <input type="hidden" name="verify" value="a3b7a6ed" />
+                    <input type="hidden" name="step" value="2" />
+                    <input type="hidden" name="type" id="search_type" value="thread" />
+                </form>
+            </li>
+            <li class="search_item cc"><!--找房子-->
+                <i class="i"></i>
+                <form name="so_form1" method="get" action="http://house.xizi.com/index.php" target="_blank">
+                    <div class="context">
+                        <div class="select" id="housing_type">
+                            <span>新房</span>
+                            <ul>
+                                <li val="list_house">新房</li>
+                                <li val="list_sale">二手房</li>
+                                <li val="list_rent">租房</li>
+                            </ul>
+                            <input id="check_house" type="hidden" name="a" value="list_house"/>
+                        </div>
+                        <div class="select" id="house_area">
+                            <span></span>
+                            <ul>
+                                <li val="">所有区域</li>
+                                <li val="22">惠城区</li>
+                                <li val="28">大亚湾区</li>
+                                <li val="52">惠阳区</li>
+                                <li val="53">仲恺高新区</li>
+                                <li val="54">博罗</li>
+                                <li val="55">惠东</li>
+                                <li val="56">龙门</li>
+                            </ul>
+                            <input type="hidden" name="areaid" />
+                        </div>
+                        <div class="select" id="house_price">
+                            <span></span>
+                            <ul>
+                                <li val="">价格不限</li>
+                                <li val="2999">3000以下</li>
+                                <li val="3000-5000">3000-5000</li>
+                                <li val="5000-6000">5000-6000</li>
+                                <li val="6000-7000">6000-7000</li>
+                                <li val="7000-8000">7000-8000</li>
+                                <li val="8000-9000">8000-9000</li>
+                                <li val="9000-10000">9000-1万</li>
+                                <li val="10000">10000以上</li>
+                            </ul>
+                            <input id="price" type="hidden" name="price" />
+                        </div>
+                        <div class="select" id="house_type">
+                            <span></span>
+                            <ul>
+                                <li val="">所有户型</li>
+                                <li val="85">一房</li>
+                                <li val="86">二房</li>
+                                <li val="87">三房</li>
+                                <li val="88">四房</li>
+                                <li val="94">五房</li>
+                                <li val="184">五房以上</li>
+                            </ul>
+                            <input type="hidden" name="htypeid" />
+                        </div>
+                    </div>
+                    <input type="submit" value="搜索" class="submit" />
+                    <input id="house_m" type="hidden" name="m" value="house">
+                    <input id="house_c" type="hidden" name="c" value="index">
+                </form>
+            </li>
+            <li class="search_item cc"><!--找工作-->
+                <i class="i"></i>
+                <form method="post" name="postform" id="postform" action="http://job.xizi.com/index.php?action=personal&option=search&extent=index" target="_blank">
+                    <div class="context">
+                        <div class="select" id="job_area">
+                            <span></span>
+                            <ul>
+                                <li val="">所有区域</li>
+                                <li val="4601">惠城区</li>
+                                <li val="4602">惠阳/大亚湾</li>
+                                <li val="4603">博罗县</li>
+                                <li val="4604">惠东县</li>
+                                <li val="4605">龙门县</li>
+                            </ul>
+                            <input type="hidden" name="pb"/>
+                        </div>
+                        <div class="select" id="job_type">
+                            <span></span>
+                            <ul>
+                                <li val="">所有职业类别</li>
+                                <li val="11">经营/管理类</li>
+                                <li val="18">财务/审计/统计类</li>
+                                <li val="23">金融/证券/投资类</li>
+                                <li val="24">保险/银行类</li>
+                                <li val="17">行政/人事/文职类</li>
+                                <li val="36">后勤保障类</li>
+                                <li val="12">销售类</li>
+                                <li val="16">市场营销/公关类</li>
+                                <li val="13">客户服务类</li>
+                                <li val="14">商店/零售服务类</li>
+                                <li val="25">贸易/物流/采购类</li>
+                                <li val="29">工业/工厂类</li>
+                                <li val="28">技工/普工类</li>
+                                <li val="27">质量/安全管理类</li>
+                                <li val="19">计算机/IT类</li>
+                                <li val="40">通讯类</li>
+                                <li val="20">电子/电气(器)类</li>
+                                <li val="30">机械(电)/仪表类</li>
+                                <li val="26">房产/物业/园林类</li>
+                                <li val="39">建筑施工类</li>
+                                <li val="31">广告/装潢/设计类</li>
+                                <li val="15">酒店/餐饮/旅游类</li>
+                                <li val="38">轻工类</li>
+                                <li val="21">化工/能源类</li>
+                                <li val="34">医疗/医药类</li>
+                                <li val="37">美容/保健/护理类</li>
+                                <li val="32">文体/写作/媒体类</li>
+                                <li val="41">出版/印刷类</li>
+                                <li val="33">培训/教育类</li>
+                                <li val="22">咨询/法律/翻译类</li>
+                                <li val="35">其他类</li>
+                            </ul>
+                            <input type="hidden" name="jobstype" />
+                        </div>
+                    </div>
+                    <input type="submit" value="搜索" class="submit" />
+                    <input type="hidden" name="keywordsubmit" value="1">
+                    <input type="hidden" name="from" value="www">
+                </form>
+            </li>
+            <li class="search_item cc"></li>
+        </ul>
+    </div>
+</div>
+<div class="nav">
+    <a href="http://zkbd.xizi.com" target="_blank"><img src="images/xiaoxi.png"/></a>
+    <ul class="main_nav cc">
+        <li><a href="http://www.xizi.com" class="current">网站首页</a></li>
+        <li><a href="http://bbs.xizi.com/">论坛</a></li>
+        <li><a href="http://house.xizi.com">房产</a></li>
+        <li><a href="http://home.xizi.com">家居</a></li>
+        <li><a href="http://auto.xizi.com">汽车</a></li>
+        <li><a href="http://job.xizi.com">人才网</a></li>
+        <li><a href="http://so.xizi.com">搜惠州</a></li>
+    </ul>
+    <dl class="sub_nav cc">
+        <dt class="bbs">社区</dt>
+        <dd class="b_nav">
+            <a href="http://city.xizi.com">惠州事</a><a href="http://food.xizi.com">美食</a><a href="http://bbs.xizi.com/forum-30-1.html">摄影</a><a href="http://bbs.xizi.com/forum-27-1.html">户外</a><a href="http://bbs.xizi.com/forum-45-1.html">运动圈</a><a href="http://bbs.xizi.com/forum-88-1.html">休闲</a><a href="http://bbs.xizi.com/forum-86-1.html">帮帮团</a><a href="http://bbs.xizi.com/forum-97-1.html">文化</a>
+
+            <a href="http://lady.xizi.com">爱美丽</a><a href="http://baby.xizi.com">妈宝</a><a href="http://marry.xizi.com">婚嫁</a><a href="http://bbs.xizi.com/forum-9-1.html">情感</a><a href="http://bbs.xizi.com/forum-120-1.html">兴趣圈</a><a href="http://bbs.xizi.com/forum-98-1.html">交流</a><a href="http://bbs.xizi.com/forum-205-1.html">西子卡</a><a href="http://bbs.xizi.com/forum-73-1.html">公益</a>
+        </dd>
+        <dt class="info">分类信息</dt>
+        <dd class="i_nav">
+            <a href="http://so.xizi.com">跳蚤市场</a><a href="http://house.xizi.com/esf">二手房</a><a href="http://house.xizi.com/esf/1">租房</a><a href="http://to.xizi.com/index.php?m=discount">消费情报</a><a href="http://so.xizi.com/index.php?m=bbs&cateid=146">二手车</a><a href="http://job.xizi.com">招聘</a>
+        </dd>
+        <dt class="product">频道</dt>
+        <dd class="p_nav">
+            <a href="http://movie.xizi.com">电影</a><a href="http://edu.xizi.com/">培训通</a><br><a href="http://trip.xizi.com">旅游</a><a href="http://buy.xizi.com">西子街</a>
+        </dd>
+
+    </dl>
+
+    <i class="n_left"></i>
+    <i class="n_right"></i>
+    <ul class="substation cc">
+        <li><a href="http://hy.xizi.com">惠阳站</a></li>
+        <li class="line">|</li>
+        <li><a href="http://hd.xizi.com">惠东站</a></li>
+        <li class="line">|</li>
+        <li><a class="last" href="http://zkbd.xizi.com">仲恺站</a></li>
+    </ul>
+</div>
+
+<div class="main_mod" style="position:relative;z-index:999;">
+    <div class="cc">
+        <div class="desc_wrap">
+            <dl class="img_desc"><dt><a href="http://app.xizi.com/click/22932" target="_blank"><img src="http://home.xizi.com/a/2014/09/cdj/20140903_50_50.gif?i3d7zD" height="50" width="50" /></a></dt><dd>
+                <h5><a href="http://app.xizi.com/click/22932" target="_blank">9.20限购令Ⅱ</a></h5><p>走进工厂买家具，沙发只需1800元</p></dd></dl><dl class="img_desc"><dt><a href="http://app.xizi.com/click/22928" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0527/20140527051031559.jpg?nMbjWC" height="50" width="50" /></a></dt><dd>
+            <h5><a href="http://app.xizi.com/click/22928" target="_blank">东风日产启辰R30</a></h5><p>首付3600元起，装备日产原装发动机，询3256988</p></dd></dl>
+        </div>
+        <div class="gg500"><div id="5492"></div></div>			
+        <div class="city_notice">
+            <h3 class="title">城市公告</h3>
+            <ul class="list_mod">
+                <li><a href="http://bbs.xizi.com/thread-3256502-1-1.html" target="_blank">惠州市生态环境园到底建在哪里好？请你提建议 </a> <span class="date">09-18</span></li>
+                <li><a href="http://city.xizi.com/view-34-59957-1.html" target="_blank">2014年惠州市“万众评公务”月评单位8月份评议结果通告</a> <span class="date">09-18</span></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="recommend">
+        <ul class="list_mod cc">
+
+            <li><a href="http://app.xizi.com/click/22696" target="_blank">玩大的！1元抢建材、送现金、抽大奖！</a></li>
+
+            <li><a href="http://app.xizi.com/click/22909" target="_blank"><font color="#cc0000">苏宁演达店团购会，滚筒洗衣机1399元</font></a></li>
+
+            <li><a href="http://app.xizi.com/click/22827" target="_blank">优质进口空调洒泪大甩卖
+            </a></li>
+
+            <li><a href="http://app.xizi.com/click/22774" target="_blank"><font color="#cc0000">发热水器照片，欧特斯送你可爱擦手巾</font></a></li>
+
+            <li><a href="http://app.xizi.com/click/22329" target="_blank"><font color="#cc0000">EF英孚教育秋季开学优惠礼品大放送</font></a></li>
+
+            <li><a href="http://app.xizi.com/click/21557" target="_blank">陈江LED全彩显示屏全球征集</a></li>
+
+            <li><a href="http://app.xizi.com/click/22529" target="_blank"><font color="#cc0000">不服来看，卧室家具1988元，抵！</font></a></li>
+
+            <li><a href="http://app.xizi.com/click/22957" target="_blank"><font color="#cc0000">2014国庆车展在鸟巢</font></a></li>
+        </ul>
+    </div>
+    <!--
+    <div style="width:1000px;height:272px;display:block;position:absolute; left:0px; top:-72px;display:none;" id="fixed-ad">
+        <embed width="1000" height="272" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" swliveconnect="TRUE" name="flashad" wmode="transparent" quality="autohigh" src="http://auto.xizi.com/a/2014/08/bc/20140825_1000_272.swf" ></embed>
+        <a style="position:absolute;width:1000px;height:272px;left:0px;top:0px;cursor:pointer;z-index:10;background-color:#fff;filter:alpha(opacity=0);opacity:0;" target="_blank" href="http://plus.xizi.com/apply/2014/08/benz/?a=app"></a>
+    </div>
+    -->
+</div>
+
+<div class="top_gg">
+
+    <a href="http://app.xizi.com/click/22838" target="_blank"><img src="http://a.xizi.com/2014/09/pesi/20140912_210_100.jpg?mB3hF8" border="0"/></a>
+</div>
+<!--大通栏 1000*45-->
+<div class="banner J_bigswf">
+    <a href="http://app.xizi.com/click/22595" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0916/20140916062324532.gif?d7qFFG" width="1000" height="45" border="0"></a><a href="http://app.xizi.com/click/22690" target="_blank"><img src="http://home.xizi.com/a/2014/09/dp/20140905_1000_45.gif?k8pXIM" width="1000" height="45" border="0"></a><a href="http://app.xizi.com/click/22829" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0911/20140911052449604.gif?vFscef" width="1000" height="45" border="0"></a><a href="http://app.xizi.com/click/22842" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0916/20140916055942640.gif?hzD6jE" width="1000" height="45" border="0"></a><a href="http://app.xizi.com/click/22834" target="_blank"><img src="http://app.xizi.com/uploadfile/2014/0915/20140915092137546.gif?iz2HQZ" width="1000" height="45" border="0"></a>		</div>
+</div>
+
+
+</div><!-- end homeWrap -->
+
+
+<div class="homeWrap mt12">
+<div class="pageOne cc">
+<div class="pageLeft fl">
+    <div id="img_focus" class="img_hot cc">
+        <ul id="img_hot_con" class="tab_content slideData">
+            <li><a href="http://bbs.xizi.com/thread-3411661-1-1.html" target="_blank"><img width="310" height="350" src="http://bbsimg.xizi.com/attachments/pushpic/20150112031916.jpg" alt="使用路灯杆编号报警，110可快速定位事发点"><span>使用路灯杆编号报警，110可快速定位事发点</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3411215-1-1.html" target="_blank"><img width="310" height="350" src="http://bbsimg.xizi.com/attachments/pushpic/20150112062507.jpg" alt="沙田世外梅园梅花已绽放，那画面美得像幅画"><span>沙田世外梅园梅花已绽放，那画面美得像幅画</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3409276-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111145736.jpg" alt="2015开年第一炮，出海钓鱼就是有鱼任性！"><span>2015开年第一炮，出海钓鱼就是有鱼任性！</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3411094-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111142009.jpg" alt="招牌三杯鸭名不虚传，蒜香牛肉粒滋味喷香"><span>招牌三杯鸭名不虚传，蒜香牛肉粒滋味喷香</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3410213-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111124840.jpg" alt="放假后的校园画面，一个人安静休闲的小时光"><span>放假后的校园画面，一个人安静休闲的小时光</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3411075-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111150041.jpg" alt="漫步土耳其，星球大战原来是在这里拍摄的"><span>漫步土耳其，星球大战原来是在这里拍摄的</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/thread-3410409-1-1.html" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111153653.jpg" alt="SUV汽车到底哪家强？照样侧翻给你看底盘！"><span>SUV汽车到底哪家强？照样侧翻给你看底盘！</span></a><i class="img_bg"></i></li>
+			<li><a href="http://bbs.xizi.com/read.php?tid=3410850&mfid=719&mapper=true" target="_blank"><img width="310" height="350" load_src="http://bbsimg.xizi.com/attachments/pushpic/20150111154713.jpg" alt="组团卖切糕？惠东环城路每隔一百米就有一档"><span>组团卖切糕？惠东环城路每隔一百米就有一档</span></a><i class="img_bg"></i></li><!---->
+        </ul>
+        <ul id="dot" class="tab_nav img_dot slideTit"><li class="on">1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul>
+    </div>
+    <!-- end img loop -->
+
+    <div class="baoliao mt20 st">
+        <div class="bl-nav yh cc">
+            <a data-show="1" data-hide="2" class="cur fl">网友爆料</a>
+            <a data-show="2" data-hide="1" class="fr">48小时热帖</a>
+        </div>
+        <div class="bl-nav1">
+            <div class="bl-tip">12月28日有汽车特辑表演，免费报名哟!</div>
+
+            <div class="bl-list">
+                <ul>
+                    <li class="cur">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge xzq">西子圈爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge">默认爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge sjbl">手机爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge weixin">微信爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge">默认爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge">默认爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge">默认爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="cc">
+                            <dl style="float:left;">
+                                <dt class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</dt>
+                                <dd class="cc">
+                                    <i class="fl bl-item-badge">默认爆料</i>
+                                    <span class="fr bl-item-author">爆料人：茜子男</span>
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
                 </ul>
-                <ul id="dot" class="tab_nav img_dot"><li class="current">1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul>
+            </div><!-- end bl-list -->
+        </div><!-- bl-nav1-->
+        <div class="bl-nav2" style="display:none">
+            <div class="page choice_read">
+                <ul>
+                    <!---->
+                    <li class=""><a class="n1" target="_blank" href="http://bbs.xizi.com/read.php?tid=3253107">西友高清拍摄红花湖“水怪”，疑是大鱼交配</a></li>
+                    <li class=""><a class="n2" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252148">西友在红花湖骑行疑拍到1.5米大鱼，有视频</a></li>
+                    <li class=""><a class="n3" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252629">县委书记实地察看龙潭底 ，谣传不攻自破了</a></li>
+                    <li class=""><a class="n4" target="_blank" href="http://bbs.xizi.com/read.php?tid=3253526">红花湖14公里处，建设中的红花湖南门已成型</a></li>
+                    <li class=""><a class="n5" target="_blank" href="http://bbs.xizi.com/read.php?tid=3253207">惨绝人寰！铁涌一男子狠手砍死妻子砍伤2女</a></li>
+                    <li class=""><a class="n6" target="_blank" href="http://bbs.xizi.com/read.php?tid=3253246">悲剧！一女子小车内引火抱3岁儿子自杀身亡</a></li>
+                    <li class=""><a class="n7" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252866">男子飞身横跨围栏学刘翔，结果被车撞倒在地</a></li>
+                    <li class=""><a class="n8" target="_blank" href="http://bbs.xizi.com/read.php?tid=3253339">母携3岁幼儿车内离奇死亡，车内有燃烧痕迹</a></li>
+                    <li class=""><a class="n9" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252079">康sir惊现陈江体育馆，围观中华武术邀请赛</a></li>
+                    <li class=""><a class="n10" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252079">康sir惊现陈江体育馆，围观中华武术邀请赛</a></li>
+                    <li class=""><a class="n11" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252079">康sir惊现陈江体育馆，围观中华武术邀请赛</a></li>
+                    <li class="nobor"><a class="n12" target="_blank" href="http://bbs.xizi.com/read.php?tid=3252366">男子骑摩托疑闯红灯出车祸，倒地上昏迷不醒</a></li>
+                    <!---->
+                </ul>
             </div>
-            <script>
+        </div><!-- bl-nav2 -->
 
-                jQuery("#img_focus").slide({titCell:"#dot li",mainCell:"#img_hot_con ",autoPlay:true});
-            </script>
-            <!-- end img loop -->
 
-            <div class="baoliao mt20 st">
-                <div class="bl-nav yh cc">
-                    <a href="" class="cur fl">网友爆料</a>
-                    <a href="" class="fr">48小时热帖</a>
+    </div><!-- end baoliao -->
+
+    <div class="zhengwu">
+        <div class="zw-header">
+            <div class="zw-header-tit yh">政务互动</div>
+        </div>
+
+        <div class="zw-nav cc">
+            <a href="" class="yang fl">110杨警官信箱</a>
+            <a href="" class="peng fr">交通事故找彭sir</a>
+        </div>
+        <div class="zw-btnGroup cc">
+            <a href="" class="zw-bl fl">违章查询</a>
+            <a href="" class="zw-bm fl">车管在线办证</a>
+            <a href="" class="zw-br fr">城管在线</a>
+        </div>
+
+    </div>
+
+</div><!-- end pageLeft -->
+<div class="pageMiddle fl">
+
+    <div class="today">
+        <div class="today-header">
+            <div class="today-tit yh">今日热点</div>
+        </div>
+        <div class="today-data">
+            <div class="hot-list">
+                <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
+                <div class="hot-list-datas">
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
                 </div>
-
-                <div class="bl-tip">12月28日有汽车特辑表演，免费报名哟!</div>
-
-                <div class="bl-list">
-                    <ul>
-                        <li class="cur">
-                            <a href="#">
-                                <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                                <div class="bl-item-btm cc">
-                                    <a href="javascript:void(0);" class="fl bl-item-badge xzq">西子圈爆料</a>
-                                    <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="#">
-                                <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                                <div class="bl-item-btm cc">
-                                    <a href="javascript:void(0);" class="fl bl-item-badge sjbl">西子圈爆料</a>
-                                    <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                                </div>
-                             </a>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge weixin">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge weixin">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge sjbl">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge xzq">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge xzq">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                        <li class="">
-                            <div class="bl-item-tit">骗子冒充运营商忽悠市民补差价换手机民</div>
-                            <div class="bl-item-btm cc">
-                                <a href="javascript:void(0);" class="fl bl-item-badge xzq">西子圈爆料</a>
-                                <a href="javascript:void(0);" class="fr bl-item-author">爆料人：茜子男</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div><!-- end bl-list -->
-            </div><!-- end baoliao -->
-
-            <div class="zhengwu">
-                   <div class="zw-header">
-                        <div class="zw-header-tit yh">政务互动</div>
-                   </div>
-
-                    <div class="zw-nav cc">
-                        <a href="" class="yang fl">110杨警官信箱</a>
-                        <a href="" class="peng fr">交通事故找彭sir</a>
-                    </div>
-                    <div class="zw-btnGroup cc">
-                        <a href="" class="zw-bl fl">违章查询</a>
-                        <a href="" class="zw-bm fl">车管在线办证</a>
-                        <a href="" class="zw-br fr">城管在线</a>
-                    </div>
-
             </div>
 
-        </div><!-- end pageLeft -->
-        <div class="pageMiddle fl">
-
-            <div class="today">
-                <div class="today-header">
-                    <div class="today-tit yh">今日热点</div>
-                </div>
-                <div class="today-data">
-                    <div class="hot-list">
-                        <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
-                        <div class="hot-list-datas">
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                        </div>
+            <div class="hot-list">
+                <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
+                <div class="hot-list-datas">
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
                     </div>
-
-                    <div class="hot-list">
-                        <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
-                        <div class="hot-list-datas">
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                        </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
                     </div>
-                    <div class="hot-list">
-                        <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
-                        <div class="hot-list-datas">
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="hot-list-item cc">
-                                <a href="" class="hot-list-i-l fl" title="">早报</a>
-                                <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                        </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
                     </div>
-                </div><!-- end today-data -->
-            </div><!-- end today -->
-            <div style="height:12px;width:100%;"></div>
-            <div class="interest">
-                <div class="interest-header cc">
-                    <div class="interest-hl fl yh">兴趣圈</div>
-                    <div class="interest-hr fr st tx-hide">【茶趣活动】对联征集对联征集对联征集</div>
-                </div>
-                <div class="img-figGroup cc">
-                    <div class="img-fig fl">
-                        <a href="">
-                            <img src="" width="160" height="115" >
-                            <p class="img-fig-tit tx-hide">品赏美景品赏美景品赏美景</p>
-                            <p class="img-fig-wrap"></p>
-                        </a>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
                     </div>
-
-                    <div class="img-fig fr">
-                        <a href="">
-                            <img src="" width="160" height="115" >
-                            <p class="img-fig-tit tx-hide">品赏美景品赏美景品赏美景</p>
-                            <p class="img-fig-wrap"></p>
-                        </a>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
                     </div>
                 </div>
+            </div>
+            <div class="hot-list">
+                <div class="hot-list-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
+                <div class="hot-list-datas">
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="hot-list-item cc">
+                        <a href="" class="hot-list-i-l fl" title="">早报</a>
+                        <a href="" class="hot-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end today-data -->
+    </div><!-- end today -->
+    <div style="height:12px;width:100%;"></div>
+    <div class="interest">
+        <div class="interest-header cc">
+            <div class="interest-hl fl yh">兴趣圈</div>
+            <div class="interest-hr fr st tx-hide">【茶趣活动】对联征集对联征集对联征集</div>
+        </div>
+        <div class="img-figGroup cc">
+            <div class="img-fig fl">
+                <a href="">
+                    <img data-original="images/ad.jpg" width="160" height="115" >
+                    <p class="img-fig-tit tx-hide">品赏美景品赏美景品赏美景</p>
+                    <p class="img-fig-wrap"></p>
+                </a>
+            </div>
 
-                <div class="interest-list">
+            <div class="img-fig fr">
+                <a href="">
+                    <img data-original="images/ad.jpg" width="160" height="115" >
+                    <p class="img-fig-tit tx-hide">品赏美景品赏美景品赏美景</p>
+                    <p class="img-fig-wrap"></p>
+                </a>
+            </div>
+        </div>
+
+        <div class="interest-list">
+            <ul>
+                <li>
+                    <a href="#" class="cc">
+                        <i class="fl badge-1 tx-hide">羽毛球</i>
+                        <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="cc">
+                        <i class="fl badge-2 tx-hide">羽毛球</i>
+                        <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="cc">
+                        <i class="fl badge-3 tx-hide">羽毛球</i>
+                        <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="cc">
+                        <i class="fl badge-4 tx-hide">羽毛球</i>
+                        <span class="fl tx-hide">自采自做 东西东西态无公公害的艾叶煎蛋是好香</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div><!-- end interest -->
+</div><!-- end pageMiddle -->
+<div class="pageRight fr">
+    <div class="tianqi">
+        <div class="item today_remind">
+
+            <div class="weather cc">
+                <iframe allowtransparency="true" frameborder="0" height="80" width="125" scrolling="no" src="http://www.xizi.com/html/weather.html?r=20140421"></iframe>
+                <a href="http://www.wenming.cn/jwmsxf_294/zggygg/" target="_blank" rel="nofollow"><img src="images/ad.jpg"/></a>
+            </div>
+            <div class="bd">
+                <ul class="list_mod">
+                    <!--XIZI-->						<!----><li><a href="http://bbs.xizi.com/thread-3256723-1-1.html" target="_blank" title="调查：社区银行就在家门口，你怎么看？">调查：社区银行就在家门口，你怎么看？</a></li><li><a href="http://bbs.xizi.com/thread-3248662-1-1.html" target="_blank" title="来玩百事造句游戏，赢oppo手机做土豪！">来玩百事造句游戏，赢oppo手机做土豪！</a></li><li><a href="http://bbs.xizi.com/thread-3256036-1-1.html" target="_blank" title="遇飞车抢夺咋办？《警方提醒》你得看啦">遇飞车抢夺咋办？《警方提醒》你得看啦</a></li><!---->					</ul>
+            </div>
+        </div>
+    </div><!-- end tianqi -->
+    <div class="pageRight-ad">
+        <img  width="310" height="90" src=""/>
+    </div>
+    <div class="pageRight-active">
+        <div class="active-header yh">
+            <div class="active-header-tit">精彩活动</div>
+        </div>
+        <div class="active-list">
+            <ul>
+                <li class="top"><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
+                <li class="top"><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
+                <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
+                <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
+                <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
+            </ul>
+        </div>
+    </div><!--end active -->
+    <div id="pageRight-loop" class="pageRight-loop">
+        <ul class="tab_content slideData">
+            <li><a target="_blank" href="http://app.xizi.com/click/25121"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/1219/20141219020909885.jpg?4tNDSG"></a></li>
+            <li><a target="_blank" href="http://app.xizi.com/click/23315"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/0930/20140930063104617.jpg?tfbFp1"></a></li>
+            <li><a target="_blank" href="http://app.xizi.com/click/25278"><img width="293" height="136" border="0" load_src="http://app.xizi.com/uploadfile/2014/1225/20141225113343198.jpg?EXIUIE"></a></li>
+            <li><a target="_blank" href="http://app.xizi.com/click/24723"><img width="293" height="136" border="0" load_src="http://app.xizi.com/uploadfile/2014/1204/20141204113015143.jpg?jqFeij"></a></li>
+            <li><a target="_blank" href="http://app.xizi.com/click/25211"><img width="293" height="136" border="0" load_src="http://app.xizi.com/uploadfile/2014/1223/20141223103032669.jpg?yi3byc"></a></li>
+        </ul>
+        <ul class="tab_nav slideTit"><li class="">1</li><li class="">2</li><li class="">3</li><li class="">4</li><li class="">5</li></ul>
+    </div>
+    <div id="pageRight-loop2" class="pageRight-loop2">
+        <ul class="tab_nav slideTit cc" id="tab_nav">
+            <li class="on"><a target="_blank" href="http://app.xizi.com/click/24440"><img alt="合宝宝马" src="http://app.xizi.com/uploadfile/2014/0616/20140616041228233.gif?dxIpEA">合宝宝马</a></li>
+            <li class="second"><a target="_blank" href="http://app.xizi.com/click/20313"><img alt="" src="http://app.xizi.com/uploadfile/2014/0618/20140618031954343.png?ydVNkQ"></a></li>
+            <li class=""><a target="_blank" href="http://app.xizi.com/click/21344"><img alt="中国体彩" src="http://app.xizi.com/uploadfile/2014/0715/20140715111502310.jpg?WBB88c">中国体彩</a></li>
+        </ul>
+        <ul class="tab_content slideData cc" id="tab_content">
+            <li style="display: list-item;">
+                <div class="box1">
+                    <ul class="list_img cc">
+                        <li><a target="_blank" href="http://app.xizi.com/click/25540"><img width="140" height="100" border="0" src="http://app.xizi.com/uploadfile/2015/0108/20150108102316388.jpg?QaA8nv"><span>惠州合宝新BMW 3系悠贷金融计划来咯</span></a></li>
+                        <li><a target="_blank" href="http://app.xizi.com/click/25541"><img width="140" height="100" border="0" src="http://app.xizi.com/uploadfile/2015/0108/20150108102243602.jpg?JBkiF4"><span>创新BMW 2系运动旅行车合宝新车实拍</span></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="hide" style="display: none;">
+                <div class="box1">
+                    <ul class="list_img cc">
+                        <li><a target="_blank" href="http://app.xizi.com/click/20427"><img width="140" height="100" border="0" load_src="http://app.xizi.com/uploadfile/2014/0530/20140530055248342.jpg?8Sl4CQ"><span>幸福生活原来是真</span></a></li>
+                        <li><a target="_blank" href="http://app.xizi.com/click/22991"><img width="140" height="100" border="0" load_src="http://home.xizi.com/a//2014/09/hd/jnz/20140918_140_100.jpg?PkRpG3"><span>缔造行业真正聚能灶 三年省回一台灶</span></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="i hide" style="display: none;">
+                <div class="box1">
+                    <ul class="list_img cc">
+                        <li><a target="_blank" href="http://app.xizi.com/click/24310"><img width="140" height="100" border="0" load_src="http://a.xizi.com/2014/11/zgtc/20141120_140_100.jpg?gApx43"><span>超级大乐透开奖号码查询，百万大奖等着你！</span></a></li>
+                        <li><a target="_blank" href="http://app.xizi.com/click/23556"><img width="140" height="100" border="0" load_src="http://a.xizi.com/2014/10/tc/140_100.jpg?Z4fUGB"><span>大乐透复式投注：不中奖，也有奖！</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div><!-- end pageRight -->
+</div><!-- end pageOne -->
+
+<div class="pageAD1">
+    <div class="adBig">
+        <a href="">
+            <img data-original="http://a.xizi.com/2013/04/baoliao/20130405_1000_90.jpg?UuxY7D" width="1000" height="80" />
+        </a>
+    </div>
+    <div class="cc adM mt10">
+        <a href="">
+            <img class="fl" data-original="http://a.xizi.com/2014/12/xzrc/20141223_1000_90.jpg?ba98PL" width="495" height="80" />
+        </a>
+        <a href="">
+            <img class="fr" data-original="http://a.xizi.com/2014/12/xzrc/20141223_1000_90.jpg?ba98PL" width="495" height="80" />
+        </a>
+    </div>
+</div><!-- end pageAD1 -->
+
+<div class="pageTwo">
+    <div class="pageTwo-header cc">
+        <div class="pageTwo-header-tit yh fl">吃喝玩乐</div>
+        <div class="pageTwo-header-link fr">
+            <a href="">找美食</a>
+            <a href="">看电影</a>
+            <a href="">信用卡优惠</a>
+            <a href="">去旅游</a>
+        </div>
+    </div><!-- end pageTwo-header -->
+    <div class="pageTwo-body cc">
+        <div class="pageTwo-left fl cc">
+            <div class="pt-figure fl">
+                <a href="" target="_blank">
+                    <img src="images/ad.jpg" width="165" height="145"/>
+                    <div class="pt-figure-wrap">
+                        <p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
+                        <i></i>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="pt-figure fl ml10">
+                <a href="" target="_blank">
+                    <img src="images/ad.jpg" width="165" height="145"/>
+                    <div class="pt-figure-wrap">
+                        <p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
+                        <i></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="pt-figure fl">
+                <a href="" target="_blank">
+                    <img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="165" height="145"/>
+                    <div class="pt-figure-wrap">
+                        <p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
+                        <i></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="pt-figure fl ml10">
+                <a href="" target="_blank">
+                    <img src="images/ad.jpg" width="165" height="145"/>
+                    <div class="pt-figure-wrap">
+                        <p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
+                        <i></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pageTwo-middle fl">
+            <div class="ptm-list">
+                <div class="ptm-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
+                <div class="ptm-list-datas">
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ptm-list">
+                <div class="ptm-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
+                <div class="ptm-list-datas">
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+                    <div class="ptm-list-item cc">
+                        <a href="" class="ptm-list-i-l fl" title="">早报</a>
+                        <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="pageTwo-right fr">
+            <div class="hz_life">
+                <ul>
+                    <li><a target="_blank" href="http://app.xizi.com/click/25429"><span class="dz">促销</span> <font color="#cc0000">逛西柚街，买腊味送丝苗米啦！</font></a></li><li><a target="_blank" href="http://app.xizi.com/click/25581"><span class="tg">活动</span>育婴师国家资格培训等你来！</a></li><li><a target="_blank" href="http://app.xizi.com/click/25582"><span class="mf">盘点</span>2014年来惠州的明星有哪些？</a></li><li><a target="_blank" href="http://app.xizi.com/click/25568"><span class="cx">花絮</span>2014年皇马户外运动群年会</a></li><li><a target="_blank" href="http://app.xizi.com/click/25569"> <span class="td">探店</span>惠州冬天就是老簋烤鱼的味道</a></li><li><a target="_blank" href="http://app.xizi.com/click/25570"> <span class="yh">免费</span>免费送年货啦！红枣坚果统统都有</a></li>
+                </ul>
+            </div><!-- end hz_life -->
+            <div class="recommend mt20">
+                <div class="recommend-header cc">
+                    <div class="recommend-tit fl">店铺推荐</div>
+                    <div class="re-count fr">1000家</div>
+                </div>
+                <div class="recommend-data">
+                    <div class="fl">
+                        <img src="" width="88" height="80" />
+                    </div>
+                    <div class="fl re-data-right">
+                        <p class="re-name">康大妈</p>
+                        <p class="addr">地址：惠州市惠城区新岸路世贸中心六楼</p>
+                        <p class="phone">电话：0752-2219100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end pageTwo-body -->
+
+</div><!-- end pageTwo -->
+
+<div class="pageThree cc">
+<div class="partBox house fl">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">房产</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <a href="" class="fr">我要团购</a>
+                <div class="fr partBox-header-note">已有 <span>1000人</span> 报名团购啦</div>
+            </div>
+            <!--
+                <div class="box-ad">
+                    <a href="" target=""><img data-original="" width="343" height="25" /></a>
+                </div>
+            -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+        <div class="partFig cc">
+            <div class="partImgGroup fl">
+                <a href="" target="_blank">
+                    <img data-original="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
+                    <p>热点楼盘价格播报 中信产品岁末特惠88折</p>
+                </a>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit tx-hide">
+                    <a href="">楼盘玩概念 声称特价房价格却</a>
+                </div>
+                <div class="partList">
                     <ul>
-                        <li>
-                            <a href="#" class="cc">
-                                <i class="fl badge-1 tx-hide">羽毛球</i>
-                                <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
-                            </a>
-                         </li>
-                        <li>
-                            <a href="#" class="cc">
-                                <i class="fl badge-2 tx-hide">羽毛球</i>
-                                <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="cc">
-                                <i class="fl badge-3 tx-hide">羽毛球</i>
-                                <span class="fl tx-hide">自采自做 东西东西态无公害的艾叶煎蛋是好香</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="cc">
-                                <i class="fl badge-4 tx-hide">羽毛球</i>
-                                <span class="fl tx-hide">自采自做 东西东西态无公公害的艾叶煎蛋是好香</span>
-                            </a>
-                        </li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
                     </ul>
                 </div>
 
-            </div><!-- end interest -->
-        </div><!-- end pageMiddle -->
-        <div class="pageRight fr">
-            <div class="tianqi">
-                <div class="item today_remind">
-                    <div class="weather cc">
-                        <iframe width="125" height="80" frameborder="0" src="http://www.xizi.com/html/weather.html?r=20140421" scrolling="no" allowtransparency="true"></iframe>
-                        <a rel="nofollow" target="_blank" href="http://www.wenming.cn/jwmsxf_294/zggygg/"><img src="images/ad.jpg"></a>
+            </div>
+        </div>
+
+        <div class="partFig cc">
+            <div class="partImgGroup fl">
+                <a href="" target="_blank">
+                    <img data-original="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150" />
+                    <p>2014长走节，品赏美景</p>
+                </a>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit2  tx-hide">
+                    优惠动态
+                </div>
+                <div class="partList partList2">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="partActive cc">
+            <div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
+            <div class="partActive-right fr cc">
+                <a href="">浩盛嘉泽园样板房现已浩盛嘉</a>
+                <a href="">泽园样板房现已浩盛嘉泽园样板</a>
+                <a href="">浩盛嘉泽园样板房现已开放</a>
+                <a href="">3千抵3万认筹样板房现已</a>
+            </div>
+        </div>
+
+    </div><!-- end partBody -->
+    <div class="partFooter">
+        <a href="">西子房产 >></a>
+        <a href="">楼盘库</a>
+        <span>|</span>
+        <a href="">房产资讯</a>
+        <span>|</span>
+        <a href="">最新开盘</a>
+        <span>|</span>
+        <a href="">社区家园 </a>
+        <span>|</span>
+        <a href="">找二手房 </a>
+        <span>|</span>
+        <a href="">我要租房</a>
+    </div><!-- end partFooter -->
+</div><!-- end house -->
+
+<div class="partBox home fr">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">家居</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <a href="" class="fr">免费报名</a>
+                <div class="fr partBox-header-note">已有 <span>1000人</span> 免费找到装修</div>
+            </div>
+            <!--
+            <div class="box-ad">
+                <a href="" target=""><img data-original="" width="343" height="25" /></a>
+            </div>
+            -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+        <div class="partFig cc">
+            <div class="partImgGroup fl">
+                <a href="" target="_blank">
+                    <img data-original="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
+                    <p>热点楼盘价格播报 中信产品岁末特惠88折</p>
+                </a>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit tx-hide">
+                    <a href="">楼盘玩概念 声称特价房价格却</a>
+                </div>
+                <div class="partList">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="partFig cc">
+            <div class="partImgGroup fl">
+                <a href="" target="_blank">
+                    <img data-original="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150" />
+                    <p>2014长走节，品赏美景</p>
+                </a>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit tx-hide">
+                    <a href="">楼盘玩概念 声称特价房价格却</a>
+                </div>
+                <div class="partList partList2">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" class="partActive-tip">恭喜惠城区业主郑某免费申请装修成功！</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="partActive cc">
+            <div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
+            <div class="partActive-right fr cc">
+                <a href="">浩盛嘉泽园样板房现已浩盛嘉</a>
+                <a href="">泽园样板房现已浩盛嘉泽园样板</a>
+                <a href="">浩盛嘉泽园样板房现已开放</a>
+                <a href="">3千抵3万认筹样板房现已</a>
+            </div>
+        </div>
+
+    </div><!-- end partBody -->
+    <div class="partFooter">
+        <a href="">西子家居 >></a>
+        <a href="">找装修</a>
+        <span>|</span>
+        <a href="">学装修</a>
+        <span>|</span>
+        <a href="">看案例</a>
+        <span>|</span>
+        <a href="">买家电</a>
+        <span>|</span>
+        <a href="">装修日记</a>
+        <span>|</span>
+        <a href="">装修大本营</a>
+    </div><!-- end partFooter -->
+</div><!-- end home -->
+
+<div class="partBox auto fl">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">汽车</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <a href="" class="fr">我要团购</a>
+                <div class="fr partBox-header-note">已有 <span>1000人</span> 人参加汽车团购</div>
+            </div>
+            <!--
+            <div class="box-ad">
+                <a href="" target=""><img data-original="" width="343" height="25" /></a>
+            </div>
+            -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+        <div class="partFig cc">
+            <div class="partImgGroup fl">
+                <img data-original="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
+                <p>热点楼盘价格播报 中信产品岁末特惠88折</p>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit tx-hide">
+                    <a href="">绝对有震撼力 实拍东风雪铁龙C3-XR</a>
+                </div>
+                <div class="partList">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="autoPost cc">
+            <div class="autoPost-tit tx-hide">
+                <a href="">绝对有震撼力 实拍东风雪铁龙C3-XR</a>
+            </div>
+            <div class="autoList cc">
+                <ul class="cc">
+                    <li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                    <li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- end partBody -->
+    <div class="partFooter">
+        <a href="">西子汽车 >></a>
+        <a href="">车型库</a>
+        <span>|</span>
+        <a href="">购车优惠</a>
+        <span>|</span>
+        <a href="">我要团购</a>
+        <span>|</span>
+        <a href="">用车服务</a>
+        <span>|</span>
+        <a href="">车天车地</a>
+        <span>|</span>
+        <a href="">我要学车</a>
+    </div><!-- end partFooter -->
+</div><!-- end auto -->
+
+<div class="partBox marry fr">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">婚嫁</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <a href="" class="fr">我要优惠</a>
+                <div class="fr partBox-header-note">已有 <span>1000人</span> 获取结婚优惠</div>
+            </div>
+            <!--
+            <div class="box-ad">
+                <a href="" target=""><img data-original="" width="343" height="25" /></a>
+            </div>
+            -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+        <div class="partFig cc">
+            <div class="partImgGroup2 fl">
+                <a href="">
+                    <div class="partFigGroupBig">
+                        <img data-original="images/ad.jpg" width="180" height="220" />
+                        <div class="figText">
+                            <p>浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹</p>
+                        </div>
                     </div>
-                    <div class="bd">
-                        <ul class="list_mod">
-                            <!--XIZI-->						<!---->
-                            <li><a title="调查：2015年最需办的民生实事是什么？" target="_blank" href="http://bbs.xizi.com/thread-3411607-1-1.html">调查：2015年最需办的民生实事是什么？</a></li>
-                            <li><a title="惠东拟设3条新能源公交线，更便民啦" target="_blank" href="http://bbs.xizi.com/thread-3412945-1-1.html">惠东拟设3条新能源公交线，更便民啦</a></li>
-                            <li><a title="核电站员工办公点离核岛仅数百米" target="_blank" href="http://city.xizi.com/view-102-60283-1.html">核电站员工办公点离核岛仅数百米</a></li><!---->
+                </a>
+            </div>
+            <div class="partPostList fl">
+                <div class="partList-tit tx-hide">
+                    <a href="">楼盘玩概念 声称特价房价格却</a>
+                </div>
+                <div class="partList">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" class="partActive-tip">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                    </ul>
+                </div>
+
+                <div class="partList-tit2  tx-hide">
+                    优惠动态
+                </div>
+                <div class="partList partList2">
+                    <ul>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        <li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="partActive cc">
+            <div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
+            <div class="partActive-right2 fl cc">
+                <a href="" class="fl">
+                    <div class="company-fig">
+                        <img data-original="" width="48" height="48" />
+                        <div class="company-desc">
+                            <p class="company-name tx-hide">金夫人婚纱摄影金夫人婚纱摄影金夫人婚纱摄影</p>
+                            <p class="company-type tx-hide">婚纱摄影婚纱摄影婚纱摄影婚纱摄影婚纱摄影</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="line"></div>
+                <a href="" class="fr">
+                    <div class="company-fig">
+                        <img data-original="" width="48" height="48" />
+                        <div class="company-desc">
+                            <p class="company-name">金夫人婚纱摄影</p>
+                            <p class="company-type">婚纱摄影</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div><!-- end partBody -->
+    <div class="partFooter">
+        <a href="">西子婚嫁 >></a>
+        <a href="">拍婚纱照</a>
+        <span>|</span>
+        <a href="">订酒店</a>
+        <span>|</span>
+        <a href="">找婚庆</a>
+        <span>|</span>
+        <a href="">找认证商家</a>
+        <span>|</span>
+        <a href="">黄道吉日</a>
+        <span>|</span>
+        <a href="">登记预约</a>
+    </div><!-- end partFooter -->
+</div><!-- end marry -->
+</div><!-- end pageThree -->
+
+
+<div class="pageAD1 mt20">
+    <div class="adBig">
+        <a href="">
+            <img data-original="http://a.xizi.com/2014/12/xzrc/20141223_1000_90.jpg?ba98PL" width="1000" height="80" />
+        </a>
+    </div>
+</div><!-- end pageAD1 -->
+
+<div id="part4" data-target="0" class="part4">
+<div class="cc">
+<div class="cc">
+    <div class="partBox trip fl">
+        <div class="partBox-header cc ">
+            <div class="partBox-tit fl yh">旅游</div>
+            <div class="partBox-header-right fr">
+                <div class="tuangou cc">
+                    <a href="" class="fr">马上报名</a>
+                    <div class="fr partBox-header-note">迎新从泉开始 来场暖冬之旅</div>
+                </div>
+                <!--
+            <div class="box-ad">
+                <a href="" target=""><img data-original="" width="343" height="25" /></a>
+            </div>
+            -->
+            </div>
+        </div><!-- end partBox-header -->
+        <div class="partBody">
+            <div class="partFig cc">
+                <div class="partImgGroup2 fl">
+                    <a href="">
+                        <div class="partFigGroupBig">
+                            <img data-original="images/ad.jpg" width="180" height="220" />
+                            <div class="figText">
+                                <p>浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="partPostList fl">
+                    <div class="partList">
+                        <ul>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥10000</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥9999</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥123</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥99.9</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥9.9</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥90</label></a></li>
+                            <li><a href="" class="cc"><span class="fl tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</span><label class="fr">￥0</label></a></li>
                         </ul>
                     </div>
-                </div>
-            </div><!-- end tianqi -->
-            <div class="pageRight-ad">
-                <img  width="310" height="90" src=""/>
-            </div>
-            <div class="pageRight-active">
-                <div class="active-header yh">
-                    <div class="active-header-tit">精彩活动</div>
-                </div>
-                <div class="active-list">
-                    <ul>
-                        <li class="top"><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
-                        <li class="top"><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
-                        <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
-                        <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
-                        <li class=""><a href="http://bbs.xizi.com/read.php?tid=3412870" title="奔跑吧！惠州市区第38届迎春长跑义工召集" target="_blank"><b>奔跑吧！惠州市区第38届迎春长跑义工召集</b><span>01月25日 星期天 [发布人: 思旭万千]</span></a></li>
-                    </ul>
-                </div>
-            </div><!--end active -->
-                    <div id="pageRight-loop" class="pageRight-loop">
-                        <ul class="tab_content">
-                            <li><a target="_blank" href="http://app.xizi.com/click/25121"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/1219/20141219020909885.jpg?4tNDSG"></a></li>
-                            <li><a target="_blank" href="http://app.xizi.com/click/23315"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/0930/20140930063104617.jpg?tfbFp1"></a></li>
-                            <li><a target="_blank" href="http://app.xizi.com/click/25278"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/1225/20141225113343198.jpg?EXIUIE"></a></li>
-                            <li><a target="_blank" href="http://app.xizi.com/click/24723"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/1204/20141204113015143.jpg?jqFeij"></a></li>
-                            <li><a target="_blank" href="http://app.xizi.com/click/25211"><img width="293" height="136" border="0" src="http://app.xizi.com/uploadfile/2014/1223/20141223103032669.jpg?yi3byc"></a></li>
-                        </ul>
-                        <ul class="tab_nav"><li class="">1</li><li class="">2</li><li class="">3</li><li class="">4</li><li class="">5</li></ul>
-                        <script>
-                            jQuery("#pageRight-loop").slide({titCell:".tab_nav li",mainCell:".tab_content ",autoPlay:true});
-                        </script>
-                    </div>
-                <div id="pageRight-loop2" class="pageRight-loop2">
-                    <ul class="tab_nav cc" id="tab_nav">
-                        <li class="on"><a target="_blank" href="http://app.xizi.com/click/24440"><img alt="合宝宝马" src="http://app.xizi.com/uploadfile/2014/0616/20140616041228233.gif?dxIpEA">合宝宝马</a></li>
-                        <li class="second"><a target="_blank" href="http://app.xizi.com/click/20313"><img alt="" src="http://app.xizi.com/uploadfile/2014/0618/20140618031954343.png?ydVNkQ"></a></li>
-                        <li class=""><a target="_blank" href="http://app.xizi.com/click/21344"><img alt="中国体彩" src="http://app.xizi.com/uploadfile/2014/0715/20140715111502310.jpg?WBB88c">中国体彩</a></li>
-                    </ul>
-                    <ul class="tab_content cc" id="tab_content">
-                        <li style="display: none;">
-                            <div class="box1">
-                                <ul class="list_img cc">
-                                    <li><a target="_blank" href="http://app.xizi.com/click/25540"><img width="140" height="100" border="0" src="http://app.xizi.com/uploadfile/2015/0108/20150108102316388.jpg?QaA8nv"><span>惠州合宝新BMW 3系悠贷金融计划来咯</span></a></li>
-                                    <li><a target="_blank" href="http://app.xizi.com/click/25541"><img width="140" height="100" border="0" src="http://app.xizi.com/uploadfile/2015/0108/20150108102243602.jpg?JBkiF4"><span>创新BMW 2系运动旅行车合宝新车实拍</span></a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="hide" style="display: list-item;">
-                            <div class="box1">
-                                <ul class="list_img cc">
-                                    <li><a target="_blank" href="http://app.xizi.com/click/20427"><img width="140" height="100" border="0" src="http://app.xizi.com/uploadfile/2014/0530/20140530055248342.jpg?8Sl4CQ"><span>幸福生活原来是真</span></a></li>
-                                    <li><a target="_blank" href="http://app.xizi.com/click/22991"><img width="140" height="100" border="0" src="http://home.xizi.com/a//2014/09/hd/jnz/20140918_140_100.jpg?PkRpG3"><span>缔造行业真正聚能灶 三年省回一台灶</span></a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="i hide" style="display: none;">
-                            <div class="box1">
-                                <ul class="list_img cc">
-                                    <li><a target="_blank" href="http://app.xizi.com/click/24310"><img width="140" height="100" border="0" src="http://a.xizi.com/2014/11/zgtc/20141120_140_100.jpg?gApx43"><span>超级大乐透开奖号码查询，百万大奖等着你！</span></a></li>
-                                    <li><a target="_blank" href="http://app.xizi.com/click/23556"><img width="140" height="100" border="0" src="http://a.xizi.com/2014/10/tc/140_100.jpg?Z4fUGB"><span>大乐透复式投注：不中奖，也有奖！</span></a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                    <script>
-                        jQuery("#pageRight-loop2").slide({titCell:"#tab_nav li",mainCell:"#tab_content ",autoPlay:true});
-                    </script>
-                </div>
 
-        </div><!-- end pageRight -->
-    </div><!-- end pageOne -->
+                    <div class="partNote cc">
+                        <img data-original="images/ad.jpg" class="fl" width="90" height="60">
+                        <div class="note-text fr">鲨鱼勇士大募集！妈宝带你们穿越动物王国，挑战重重难关鲨鱼挑战重重难关鲨挑战重重难关鲨挑战重重难关鲨勇士大募集！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end trip -->
+
+    <div class="partBox baby fr">
+        <div class="partBox-header cc ">
+            <div class="partBox-tit fl yh">亲子</div>
+            <div class="partBox-header-right fr">
+                <div class="tuangou cc">
+                    <div class="fr partBox-header-note">新手妈妈对抗宝宝吐奶有妙招！内附详细图解</div>
+                </div>
+                <!--
+                <div class="box-ad">
+                    <a href="" target=""><img data-original="" width="343" height="25" /></a>
+                </div>
+                -->
+            </div>
+        </div><!-- end partBox-header -->
+        <div class="partBody">
+            <div class="partFig cc">
+                <div class="partImgGroup2 fl">
+                    <a href="">
+                        <div class="partFigGroupBig">
+                            <img data-original="images/ad.jpg" width="180" height="220" />
+                            <div class="figText">
+                                <p>浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="partPostList fl">
+                    <div class="baby-tit box-hover">
+                        <a href="" target="_blank">
+                            <span class="tx-hide">女性职业的明日之星</span>
+                            <p>女人当自强，新时代女性独立自主，育婴师资格考试报名的机会来了！</p>
+                        </a>
+                    </div>
+                    <div class="partList">
+                        <ul>
+                            <li><a href="" class="cc tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                            <li><a href="" class="cc tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                            <li><a href="" class="cc tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                            <li><a href="" class="cc tx-hide">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="partNote cc">
+                        <img data-original="images/ad.jpg" class="fl" width="90" height="60">
+                        <div class="note-text fr">鲨鱼勇士大募集！妈宝带你们穿越动物王国，挑战重重难关鲨鱼挑战重重难关鲨挑战重重难关鲨挑战重重难关鲨勇士大募集！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end baby -->
+</div>
+
+<div class="partBox job fl">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">惠州招聘</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <a href="" class="fr">免费找工作</a>
+                <div class="fr partBox-header-note">招聘中职位 <span>1000</span> </div>
+            </div>
+            <!--
+                <div class="box-ad">
+                    <a href="" target=""><img data-original="" width="343" height="25" /></a>
+                </div>
+                -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+
+        <div class="job-list cc">
+            <ul>
+
+                <li class="cc pop">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>酱油</span></span>
+                        <span><span>酱油</span></span>
+                        <span><span>酱油</span></span>
+                        <span><span>酱油</span></span>
+                        <span><span>酱油</span></span>
+                        <span><span>酱油</span></span>
+                    </a>
+                </li>
+                <li class="cc pop">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+                <li class="cc">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+                <li class="cc">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+                <li class="cc">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+                <li class="cc">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+                <li class="cc">
+                    <a target="_blank" class="tx-hide" href="http://job.xizi.com/company/company-show.php?id=43371">
+                        <b>上海三菱电梯有限公司惠州分公司</b>
+                        诚聘：<span><span>储备电梯维修技师</span></span>
+                        <span><span>储备电梯调试、验收员</span></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="partActive cc">
+            <div class="partActive-left fl"><p>企业</p><p>动态</p></div>
+            <div class="partActive-right fr cc">
+                <a href="">浩盛嘉泽园样板房现已浩盛嘉</a>
+                <a href="">泽园样板房现已浩盛嘉泽园样板</a>
+                <a href="">浩盛嘉泽园样板房现已开放</a>
+                <a href="">3千抵3万认筹样板房现已</a>
+            </div>
+        </div>
+
+    </div><!-- end partBody -->
+
+</div><!-- end job -->
+
+
+<div class="partBox edu fr">
+    <div class="partBox-header cc ">
+        <div class="partBox-tit fl yh">培训</div>
+        <div class="partBox-header-right fr">
+            <div class="tuangou cc">
+                <div class="fr partBox-header-note">共有 <span>1000</span> 个惠州培训课程在招生</div>
+            </div>
+            <!--
+                <div class="box-ad">
+                    <a href="" target=""><img data-original="" width="343" height="25" /></a>
+                </div>
+                -->
+        </div>
+    </div><!-- end partBox-header -->
+    <div class="partBody">
+
+        <div class="edu-list cc">
+            <div class="fl edu-left">
+                <ul>
+                    <!--XIZI-->
+                    <li><a class="tx-hide" href="http://a.xizi.com/2014/12/qk/index.html" target="_blank">学催乳:创业/兼职/全职/保健/找工作</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=10&amp;id=2551" target="_blank">新航道国际教育集团被评为“中国教育领军品牌”</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=9&amp;id=2549" target="_blank">惠州小小柏琴行“任‘sing’班”流行演唱课程开始报名啰</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=9&amp;id=2547" target="_blank">刘强东进化史：卖过光盘开过网店</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=9&amp;id=2544" target="_blank">曝奶茶妹与刘强东未分手 男方不满女友抛头露面</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=9&amp;id=2545" target="_blank">90后“打工学霸”逃课也能进哈佛 任性也自信</a></li>
+
+                    <li><a class="tx-hide" href="http://to.xizi.com/index.php?m=train&amp;c=index&amp;a=view_contents&amp;catid=7&amp;id=2552" target="_blank">“学霸”研发3D打印抛光机获专利转让费200万元</a></li>
+
+                </ul>
+
+                <div class="edu-fig cc box-hover">
+                    <a href="">
+                        <img class="fl" data-original="" width="54" height="49">
+                        <div class="edu-fig-desc fr">
+                            <span>新思启商学院</span>
+                            <p>《北京大学资本一、二班课程-陈晋蓉教授》</p>
+                            <p>《听禅宗故事，悟智慧人生》</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="fr edu-right">
+                <ul id="train_courses" class="list_class">
+                    <li class="top"><span class="t">课程分类</span><span class="s">数量</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/3/0">学历进修</a></span><span val="3" class="s num">(1515)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/4/0">资格认证</a></span><span val="4" class="s num">(1622)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/2/0">职业技能</a></span><span val="2" class="s num">(743)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/97/0">企业管理</a></span><span val="97" class="s num">(358)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/5/0">早教课程</a></span><span val="5" class="s num">(937)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/98/0">课外辅导</a></span><span val="98" class="s num">(678)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/7/0">外语培训</a></span><span val="7" class="s num">(267)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/8/0">文体艺术</a></span><span val="8" class="s num">(405)</span></li>
+                    <li><span class="t"><a target="_blank" href="http://to.xizi.com/edu/courses/0/51/0">驾驶培训</a></span><span val="51" class="s num">(10)</span></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+    </div><!-- end edu -->
+
+</div><!-- end job -->
+</div><!-- end cc -->
+
+</div><!-- end part4 -->
+<div id="part5" data-target="0" class="part5 ">
+    <div class="cc">
+        <div class="partBox2 consumption">
+            <div class="pb2-h cc">
+                <div class="pb2-h-t fl">
+                    <span class="zh yh">消费生活</span>
+                    <span class="en">Consumer life</span>
+                </div>
+                <div class="pb2-h-r fr"><a href="" target="_blank">加盟西子卡，逾百万西子会员光临你的店铺</a></div>
+            </div>
+            <div class="consumption-data">
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+                <a class="img_title" target="_blank" href="http://app.xizi.com/click/24609">
+                    <img width="185" height="105" data-original="http://app.xizi.com/uploadfile/2014/1117/20141117054737231.jpg?PHTXWF">
+                    <strong>
+                        <span class="sort">[优惠]</span> 广发信用卡
+                        <span class="descript">自助餐逢周五买一送一或半价</span>
+                    </strong>
+                </a>
+
+            </div>
+        </div>
+    </div><!-- end cc -->
 
     <div class="pageAD1">
         <div class="adBig">
             <a href="">
-                <img src="" width="1000" height="80" />
+                <img data-original="" width="1000" height="80" />
             </a>
         </div>
-        <div class="cc adM mt10">
-            <a href="">
-                <img class="fl" src="" width="495" height="80" />
-            </a>
-            <a href="">
-                <img class="fr" src="" width="495" height="80" />
-            </a>
-        </div>
-    </div><!-- end pageAD1 -->
+    </div>
 
-    <div class="pageTwo">
-        <div class="pageTwo-header cc">
-            <div class="pageTwo-header-tit yh fl">吃喝玩乐</div>
-			<div class="pageTwo-header-link fr">
-				<a href="">找美食</a>
-				<a href="">看电影</a>
-				<a href="">信用卡优惠</a>
-				<a href="">去旅游</a>
-			</div>
-        </div><!-- end pageTwo-header -->
-		<div class="pageTwo-body cc">
-			<div class="pageTwo-left fl cc">
-				<div class="pt-figure fl">
-					<img src="images/ad.jpg" width="165" height="145"/>
-					<div class="pt-figure-wrap">
-						<p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
-						<i></i>						
-					</div>		
-					<a class="figure-link"></a>		
-				</div>
-				
-				<div class="pt-figure fl ml10">
-					<img src="images/ad.jpg" width="165" height="145"/>
-					<div class="pt-figure-wrap">
-						<p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
-						<i></i>						
-					</div>		
-					<a class="figure-link"></a>		
-				</div>
-				
-				<div class="pt-figure fl">
-					<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="165" height="145"/>
-					<div class="pt-figure-wrap">
-						<p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
-						<i></i>						
-					</div>		
-					<a class="figure-link"></a>		
-				</div>
-				
-				<div class="pt-figure fl ml10">
-					<img src="images/ad.jpg" width="165" height="145"/>
-					<div class="pt-figure-wrap">
-						<p class="pt-figure-tit">广州Hello kitty主题餐厅美味主题餐厅美</p>
-						<i></i>						
-					</div>		
-					<a class="figure-link"></a>		
-				</div>
-			</div>
-			<div class="pageTwo-middle fl">
-				<div class="ptm-list">
-                        <div class="ptm-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
-                        <div class="ptm-list-datas">
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                     
-                        </div>
+</div><!-- end part5 -->
+<div id="part6" data-target="0" class="part6 ">
+    <div class=" movie cc">
+        <div class="part6-left fl">
+            <div class="partBox2">
+                <div class="pb2-h cc">
+                    <div class="pb2-h-t fl">
+                        <span class="zh yh">电影娱乐</span>
+                        <span class="en">Movie entertainment</span>
+                    </div>
+                    <div class="pb2-h-r fr"><a href="" target="_blank">最新优惠：【南国影城】南国《王牌》跨年盛典 2015任性狂欢</a></div>
                 </div>
-				<div class="ptm-list">
-                        <div class="ptm-tit"><a href="">弹弓砸烂车窗行窃 江北无业砸车男终</a></div>
-                        <div class="ptm-list-datas">
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                            <div class="ptm-list-item cc">
-                                <a href="" class="ptm-list-i-l fl" title="">早报</a>
-                                <a href="" class="ptm-list-i-r fl" title="">自采自做 东西东西态无公害的艾叶煎蛋是好香</a>
-                            </div>
-                     
+                <div class="ml-data cc">
+                    <div class="fl m-post">
+                        <ul>
+                            <li class="top"><a class="tx-hide" target="_blank" href="http://app.xizi.com/click/25552">这个活动将跨年，错过了要等365天了！</a></li>
+                            <li><a class="tx-hide"  title="美丽的惠州夜景，让我们对生活充满激情！" target="_blank" href="http://bbs.xizi.com/read.php?tid=3410677">美丽的惠美丽的惠美丽的惠美丽的惠州夜景，让我们对生活充满激情！</a></li>
+                            <li><a class="tx-hide"  title="耸人听闻的穿越，最后竟然是这样的结局啊" target="_blank" href="http://bbs.xizi.com/read.php?tid=3410439">耸人听闻的穿越，最后竟然是这样的结局啊</a></li>
+                            <li><a class="tx-hide"  title="这次，我们要一起和兄弟去丛林里奔跑吗？" target="_blank" href="http://bbs.xizi.com/read.php?tid=3409731">这次，我们要一起和兄弟去丛林里奔跑吗？</a></li>
+                            <li><a class="tx-hide"  title="有没有人和我一样，在等待着四月的来临呢" target="_blank" href="http://bbs.xizi.com/read.php?tid=3409499">有没有人和我一样，在等待着四月的来临呢</a></li>
+                            <li><a class="tx-hide"  title="一首不同寻常的爱的颂歌，就在这里唱起了" target="_blank" href="http://bbs.xizi.com/read.php?tid=3408675">一首不同寻常的爱的颂歌，就在这里唱起了</a></li>
+                        </ul>
+                        <div class="mpost-fig cc">
+                            <a target="_blank" href="">
+                                <img class="fl" width="90" height="60" border="0" data-original="http://app.xizi.com/uploadfile/2015/0109/20150109100431979.jpg?HVaGkK" />
+                                <p class="fr">【娱乐大盘点】2014年来过惠州的明星们，你见过哪一位？</p>
+                            </a>
                         </div>
+
+                    </div>
+                    <div class="fr m-list">
+                        <div id="movie_focus" class="movie_focus cc">
+                            <ul class="tab_nav slideTit">
+                                <li class=""><a target="_blank" href="http://movie.xizi.com/m/15006"><i class="i i0">1</i>重返20岁</a></li>
+                                <li class="current"><a target="_blank" href="http://movie.xizi.com/m/14711"><i class="i i1">2</i>博物馆奇妙夜3</a></li>
+                                <li class=""><a target="_blank" href="http://movie.xizi.com/m/14184"><i class="i i2">3</i>智取威虎山</a></li>
+                                <li class=""><a target="_blank" href="http://movie.xizi.com/m/15005"><i class="i i3">4</i>一代宗师</a></li>
+                                <li class=""><a target="_blank" href="http://movie.xizi.com/m/15007"><i class="i i4">5</i>前目的地</a></li>
+                            </ul>
+                            <ul class="tab_content slideData">
+                                <li style="display:  list-item;">
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <a target="_blank" href="http://movie.xizi.com/m/15006"><img width="123" height="170" src="http://to.xizi.com/uploadfile/movie/product/2015/01/thumb_123_170_20150107105645356.jpg" /></a>
+                                        </dt>
+                                        <dd>
+                                            <a target="_blank" href="http://movie.xizi.com/kaishi"><span>12场</span>凯狮国际影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/nanguo"><span>8场</span>中影南国</a>
+                                            <a target="_blank" href="http://movie.xizi.com/baiyu"><span>16场</span>中影百誉</a>
+                                            <a target="_blank" href="http://movie.xizi.com/htyy"><span>7场</span>皇庭影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/zhonghui"><span>9场</span>中惠影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/jinbao"><span>6场</span>惠东金宝</a>
+                                            <a target="_blank" href="http://movie.xizi.com/xcyy"><span>5场</span>星辰国际影城</a>
+                                        </dd>
+                                    </dl></li>
+                                <li style="display:none;">
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <a target="_blank" href="http://movie.xizi.com/m/14711"><img width="123" height="170" load_src="http://to.xizi.com/uploadfile/movie/product/2014/12/thumb_123_170_20141229054917900.jpg" /></a>
+                                        </dt>
+                                        <dd>
+                                            <a target="_blank" href="http://movie.xizi.com/kaishi"><span>10场</span>凯狮国际影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/nanguo"><span>8场</span>中影南国</a>
+                                            <a target="_blank" href="http://movie.xizi.com/baiyu"><span>14场</span>中影百誉</a>
+                                            <a target="_blank" href="http://movie.xizi.com/htyy"><span>6场</span>皇庭影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/zhonghui"><span>5场</span>中惠影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/jinbao"><span>3场</span>惠东金宝</a>
+                                            <a target="_blank" href="http://movie.xizi.com/xcyy"><span>3场</span>星辰国际影城</a>
+                                        </dd>
+                                    </dl></li>
+                                <li style="display: none;">
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <a target="_blank" href="http://movie.xizi.com/m/14184"><img width="123" height="170" load_src="http://to.xizi.com/uploadfile/movie/product/2014/12/thumb_123_170_20141218114621701.jpg" /></a>
+                                        </dt>
+                                        <dd>
+                                            <a target="_blank" href="http://movie.xizi.com/kaishi"><span>5场</span>凯狮国际影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/nanguo"><span>5场</span>中影南国</a>
+                                            <a target="_blank" href="http://movie.xizi.com/baiyu"><span>4场</span>中影百誉</a>
+                                            <a target="_blank" href="http://movie.xizi.com/htyy"><span>0场</span>皇庭影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/zhonghui"><span>5场</span>中惠影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/jinbao"><span>1场</span>惠东金宝</a>
+                                            <a target="_blank" href="http://movie.xizi.com/xcyy"><span>3场</span>星辰国际影城</a>
+                                        </dd>
+                                    </dl></li>
+                                <li style="display: none;">
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <a target="_blank" href="http://movie.xizi.com/m/15005"><img width="123" height="170" load_src="http://to.xizi.com/uploadfile/movie/product/2015/01/thumb_123_170_20150107104524542.jpg" /></a>
+                                        </dt>
+                                        <dd>
+                                            <a target="_blank" href="http://movie.xizi.com/kaishi"><span>5场</span>凯狮国际影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/nanguo"><span>2场</span>中影南国</a>
+                                            <a target="_blank" href="http://movie.xizi.com/baiyu"><span>0场</span>中影百誉</a>
+                                            <a target="_blank" href="http://movie.xizi.com/htyy"><span>0场</span>皇庭影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/zhonghui"><span>2场</span>中惠影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/jinbao"><span>3场</span>惠东金宝</a>
+                                            <a target="_blank" href="http://movie.xizi.com/xcyy"><span>5场</span>星辰国际影城</a>
+                                        </dd>
+                                    </dl></li>
+                                <li style="display: none;">
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <a target="_blank" href="http://movie.xizi.com/m/15007"><img width="123" height="170" load_src="http://to.xizi.com/uploadfile/movie/product/2015/01/thumb_123_170_20150107105951254.jpg" /></a>
+                                        </dt>
+                                        <dd>
+                                            <a target="_blank" href="http://movie.xizi.com/kaishi"><span>0场</span>凯狮国际影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/nanguo"><span>1场</span>中影南国</a>
+                                            <a target="_blank" href="http://movie.xizi.com/baiyu"><span>2场</span>中影百誉</a>
+                                            <a target="_blank" href="http://movie.xizi.com/htyy"><span>5场</span>皇庭影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/zhonghui"><span>2场</span>中惠影城</a>
+                                            <a target="_blank" href="http://movie.xizi.com/jinbao"><span>2场</span>惠东金宝</a>
+                                            <a target="_blank" href="http://movie.xizi.com/xcyy"><span>1场</span>星辰国际影城</a>
+                                        </dd>
+                                    </dl></li>
+                            </ul>
+							
+				
+                        </div>
+
+                        <div class="m-active">
+                            <dl class="youhui cc">
+                                <dt class="fl">影城活动</dt>
+                                <dd class="fl">
+                                    <ul class="ma-list">
+                                        <li><a class="sort" target="_blank" href="http://app.xizi.com/click/17629">介绍</a><span class="line">|</span><a href="http://app.xizi.com/click/17629" target="_blank" title="带你装逼带你飞，看看惠州第一巨幕的影院！">带你装逼带你飞，看看惠州第一巨幕的影院！</a></li>
+                                        <li><a class="sort" target="_blank" href="http://app.xizi.com/click/18525">知识</a><span class="line">|</span><a href="http://app.xizi.com/click/18525" target="_blank" title="正确认识影片版本，看电影不求人">正确认识影片版本，看电影不求人</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+
+                    </div><!-- end m-list -->
+
+
+                </div><!-- end ml-data -->
+            </div>
+        </div><!-- end left -->
+        <div class="part6-right fr">
+            <div class="partBox2 ">
+                <div class="pb2-h cc">
+                    <div class="pb2-h-t fl">
+                        <span class="zh yh">文化艺术中心演出</span>
+                    </div>
                 </div>
-			</div>
-			<div class="pageTwo-right fr">
-				<div class="hz_life">	
-					<ul>
-						<li><a target="_blank" href="http://app.xizi.com/click/25429"><span class="dz">促销</span> <font color="#cc0000">逛西柚街，买腊味送丝苗米啦！</font></a></li><li><a target="_blank" href="http://app.xizi.com/click/25581"><span class="tg">活动</span>育婴师国家资格培训等你来！</a></li><li><a target="_blank" href="http://app.xizi.com/click/25582"><span class="mf">盘点</span>2014年来惠州的明星有哪些？</a></li><li><a target="_blank" href="http://app.xizi.com/click/25568"><span class="cx">花絮</span>2014年皇马户外运动群年会</a></li><li><a target="_blank" href="http://app.xizi.com/click/25569"> <span class="td">探店</span>惠州冬天就是老簋烤鱼的味道</a></li><li><a target="_blank" href="http://app.xizi.com/click/25570"> <span class="yh">免费</span>免费送年货啦！红枣坚果统统都有</a></li>				
-					</ul>			
-				</div><!-- end hz_life -->
-				<div class="recommend mt20">
-					<div class="recommend-header cc">
-						<div class="recommend-tit fl">店铺推荐</div>
-						<div class="re-count fr">1000家</div>
-					</div>
-					<div class="recommend-data">
-						<div class="fl">
-							<img src="" width="88" height="80" />
-						</div>
-						<div class="fl re-data-right">
-							<p class="re-name">康大妈</p>
-							<p class="addr">地址：惠州市惠城区新岸路世贸中心六楼</p>
-							<p class="phone">电话：0752-2219100</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!-- end pageTwo-body -->
-		
-    </div><!-- end pageTwo -->
-	
-	<div class="pageThree cc">
-		<div class="partBox house fl">
-			<div class="partBox-header cc ">
-				<div class="partBox-tit fl yh">房产</div>
-				<div class="partBox-header-right fr">
-					<div class="tuangou cc">
-						<a href="" class="fr">我要团购</a>
-						<div class="fr partBox-header-note">已有 <span>1000人</span> 报名团购啦</div>									
-					</div>
-				</div>	
-			</div><!-- end partBox-header -->
-			<div class="partBody">
-				<div class="partFig cc">
-					<div class="partImgGroup fl">
-						<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
-						<p>热点楼盘价格播报 中信产品岁末特惠88折</p>						
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit tx-hide">
-							<a href="">楼盘玩概念 声称特价房价格却</a>
-						</div>
-						<div class="partList">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-				
-				<div class="partFig cc">
-					<div class="partImgGroup fl">
-						<a href="javascript:alert(1);"></a>
-						<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150" />
-						<p>2014长走节，品赏美景</p>						
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit2  tx-hide">
-							优惠动态
-						</div>
-						<div class="partList partList2">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				
-				</div>
-				
-				<div class="partActive cc">
-						<div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
-						<div class="partActive-right fr cc">
-							<a href="">浩盛嘉泽园样板房现已浩盛嘉</a>
-							<a href="">泽园样板房现已浩盛嘉泽园样板</a>
-							<a href="">浩盛嘉泽园样板房现已开放</a>
-							<a href="">3千抵3万认筹样板房现已</a>
-						</div>
-				</div>
-				
-			</div><!-- end partBody -->
-			<div class="partFooter">
-				<a href="">西子房产 >></a>
-				<a href="">楼盘库</a>
-				<span>|</span>
-				<a href="">房产资讯</a>
-				<span>|</span>
-				<a href="">最新开盘</a>
-				<span>|</span>
-				<a href="">社区家园 </a>
-				<span>|</span>
-				<a href="">找二手房 </a>
-				<span>|</span>
-				<a href="">我要租房</a>
-			</div><!-- end partFooter -->
-		</div><!-- end house -->
-		
-		<div class="partBox home fr">
-			<div class="partBox-header cc ">
-				<div class="partBox-tit fl yh">家居</div>
-				<div class="partBox-header-right fr">
-					<div class="tuangou cc">
-						<a href="" class="fr">免费报名</a>
-						<div class="fr partBox-header-note">已有 <span>1000人</span> 免费找到装修</div>									
-					</div>
-				</div>	
-			</div><!-- end partBox-header -->
-			<div class="partBody">
-				<div class="partFig cc">
-					<div class="partImgGroup fl">
-						<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
-						<p>热点楼盘价格播报 中信产品岁末特惠88折</p>						
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit tx-hide">
-							<a href="">楼盘玩概念 声称特价房价格却</a>
-						</div>
-						<div class="partList">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-				
-				<div class="partFig cc">
-					<div class="partImgGroup fl">
-						<a href="javascript:alert(1);"></a>
-						<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150" />
-						<p>2014长走节，品赏美景</p>						
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit tx-hide">
-							<a href="">楼盘玩概念 声称特价房价格却</a>
-						</div>
-						<div class="partList partList2">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" class="partActive-tip">恭喜惠城区业主郑某免费申请装修成功！</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				
-				</div>
-				
-				<div class="partActive cc">
-						<div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
-						<div class="partActive-right fr cc">
-							<a href="">浩盛嘉泽园样板房现已浩盛嘉</a>
-							<a href="">泽园样板房现已浩盛嘉泽园样板</a>
-							<a href="">浩盛嘉泽园样板房现已开放</a>
-							<a href="">3千抵3万认筹样板房现已</a>
-						</div>
-				</div>
-				
-			</div><!-- end partBody -->
-			<div class="partFooter">
-				<a href="">西子家居 >></a>
-				<a href="">找装修</a>
-				<span>|</span>
-				<a href="">学装修</a>
-				<span>|</span>
-				<a href="">看案例</a>
-				<span>|</span>
-				<a href="">买家电</a>
-				<span>|</span>
-				<a href="">装修日记</a>
-				<span>|</span>
-				<a href="">装修大本营</a>
-			</div><!-- end partFooter -->
-		</div><!-- end home -->
-		
-		<div class="partBox auto fl">
-			<div class="partBox-header cc ">
-				<div class="partBox-tit fl yh">汽车</div>
-				<div class="partBox-header-right fr">
-					<div class="tuangou cc">
-						<a href="" class="fr">我要团购</a>
-						<div class="fr partBox-header-note">已有 <span>1000人</span> 人参加汽车团购</div>									
-					</div>
-				</div>	
-			</div><!-- end partBox-header -->
-			<div class="partBody">
-				<div class="partFig cc">
-					<div class="partImgGroup fl">
-						<img src="http://app.xizi.com/uploadfile/2015/0112/20150112052136520.jpg?QHYTTC" width="180" height="150px" />
-						<p>热点楼盘价格播报 中信产品岁末特惠88折</p>						
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit tx-hide">
-							<a href="">绝对有震撼力 实拍东风雪铁龙C3-XR</a>
-						</div>
-						<div class="partList">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-				
-				
-				<div class="autoPost cc">
-					<div class="autoPost-tit tx-hide">
-						<a href="">绝对有震撼力 实拍东风雪铁龙C3-XR</a>
-					</div>
-					<div class="autoList cc">
-						<ul class="cc">
-							<li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fl cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-							<li class="fr cc"><span class="fl tx-hide">惠州合宝X1优惠5000元</span><a href="" class="fr">询价</a></li>
-						</ul>
-					</div>
-				</div>
-								
-			</div><!-- end partBody -->
-			<div class="partFooter">
-				<a href="">西子汽车 >></a>
-				<a href="">车型库</a>
-				<span>|</span>
-				<a href="">购车优惠</a>
-				<span>|</span>
-				<a href="">我要团购</a>
-				<span>|</span>
-				<a href="">用车服务</a>
-				<span>|</span>
-				<a href="">车天车地</a>
-				<span>|</span>
-				<a href="">我要学车</a>
-			</div><!-- end partFooter -->
-		</div><!-- end auto -->
-		
-		<div class="partBox marry fr">
-			<div class="partBox-header cc ">
-				<div class="partBox-tit fl yh">婚嫁</div>
-				<div class="partBox-header-right fr">
-					<div class="tuangou cc">
-						<a href="" class="fr">我要优惠</a>
-						<div class="fr partBox-header-note">已有 <span>1000人</span> 获取结婚优惠</div>									
-					</div>
-				</div>	
-			</div><!-- end partBox-header -->
-			<div class="partBody">
-				<div class="partFig cc">
-					<div class="partImgGroup2 fl">
-						<a href="">
-							<div class="partFigGroupBig">
-								<img src="images/ad.jpg" width="180" height="220" />
-								<div class="figText">
-									<p>浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹浩盛嘉泽园样板房现已开放 3千抵3万认筹</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="partPostList fl">
-						<div class="partList-tit tx-hide">
-							<a href="">楼盘玩概念 声称特价房价格却</a>
-						</div>
-						<div class="partList">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" class="partActive-tip">保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-						<div class="partList-tit2  tx-hide">
-							优惠动态
-						</div>
-						<div class="partList partList2">
-							<ul>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-								<li><a href="" >保利山水城主售N+1房 均价4700元/平米岁末</a></li>
-							</ul>
-						</div>
-						
-						
-					</div>
-				</div>
-				
+                <div class="mr-data">
+                    <a target="_blank" href="" class="cc">
+                        <img class="fl" width="50" height="50" border="0" data-original="http://app.xizi.com/uploadfile/2015/0109/20150109100431979.jpg?HVaGkK" />
+                        <strong class="fl">
+                            <p class="mrd-name">音乐剧《王二的长征》</p>
+                            <p class="mrd-time">2013-11-26 20:00</p>
+                        </strong>
+                    </a>
 
-				
-				<div class="partActive cc">
-						<div class="partActive-left fl"><p>楼盘</p><p>活动</p></div>
-						<div class="partActive-right2 fl cc">
-							<a href="" class="fl">
-								<div class="company-fig">
-									<img src="" width="48" height="48" />
-									<div class="company-desc">
-										<p class="company-name tx-hide">金夫人婚纱摄影金夫人婚纱摄影金夫人婚纱摄影</p>
-										<p class="company-type tx-hide">婚纱摄影婚纱摄影婚纱摄影婚纱摄影婚纱摄影</p>
-									</div>
-								</div>
-							</a>
-							<div class="line"></div>
-							<a href="" class="fr">
-								<div class="company-fig">
-									<img src="" width="48" height="48" />
-									<div class="company-desc">
-										<p class="company-name">金夫人婚纱摄影</p>
-										<p class="company-type">婚纱摄影</p>
-									</div>
-								</div>
-							</a>
-						</div>
-				</div>
-				
-			</div><!-- end partBody -->
-			<div class="partFooter">
-				<a href="">西子婚嫁 >></a>
-				<a href="">拍婚纱照</a>
-				<span>|</span>
-				<a href="">订酒店</a>
-				<span>|</span>
-				<a href="">找婚庆</a>
-				<span>|</span>
-				<a href="">找认证商家</a>
-				<span>|</span>
-				<a href="">黄道吉日</a>
-				<span>|</span>
-				<a href="">登记预约</a>
-			</div><!-- end partFooter -->
-		</div><!-- end marry -->
-	</div><!-- end pageThree -->
-	
-	
-	<div class="pageAD1 mt20">
-        <div class="adBig">
-            <a href="">
-                <img src="" width="1000" height="80" />
-            </a>
+                    <a target="_blank" href="" class="cc">
+                        <img class="fl" width="50" height="50" border="0" data-original="http://app.xizi.com/uploadfile/2015/0109/20150109100431979.jpg?HVaGkK" />
+                        <strong class="fl">
+                            <p class="mrd-name">音乐剧《王二的长征》</p>
+                            <p class="mrd-time">2013-11-26 20:00</p>
+                        </strong>
+                    </a>
+
+                    <a target="_blank" href="" class="cc">
+                        <img class="fl" width="50" height="50" border="0" data-original="http://app.xizi.com/uploadfile/2015/0109/20150109100431979.jpg?HVaGkK" />
+                        <strong class="fl">
+                            <p class="mrd-name">音乐剧《王二的长征》</p>
+                            <p class="mrd-time">2013-11-26 20:00</p>
+                        </strong>
+                    </a>
+
+                    <a target="_blank" href="" class="cc">
+                        <img class="fl" width="50" height="50" border="0" data-original="http://app.xizi.com/uploadfile/2015/0109/20150109100431979.jpg?HVaGkK" />
+                        <strong class="fl">
+                            <p class="mrd-name">音乐剧《王二的长征》</p>
+                            <p class="mrd-time">2013-11-26 20:00</p>
+                        </strong>
+                    </a>
+                </div>
+            </div>
+        </div><!-- end right -->
+    </div><!-- end part6 -->
+
+</div><!-- end part6 -->
+<div id="part7" data-target="0" class="part7 ">
+    <div class="partBox2 lady">
+        <div class="pb2-h cc">
+            <div class="pb2-h-t fl">
+                <span class="zh yh">爱美丽</span>
+                <span class="en">Lady</span>
+            </div>
+            <div class="pb2-h-r fr"><a href="" target="_blank">她做的人偶粘土，竟跟照片中的人一摸一样</a></div>
         </div>
-    </div><!-- end pageAD1 -->
+        <div class="lady-data cc">
+            <a href="" target="_blank" class="linkImg first">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
 
-	
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="146" height="176" />
+                <strong>
+                    <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                </strong>
+            </a>
+
+
+        </div>
+    </div><!-- end partBox2 -->
+</div><!-- end part7 -->
+<div id="part8" data-target="0" class="part8 ">
+    <div class="partBox2 buy">
+        <div class="pb2-h cc">
+            <div class="pb2-h-t fl">
+                <span class="zh yh">西子街</span>
+                <span class="en">Shopping</span>
+            </div>
+            <div class="pb2-h-r fr"><a href="" target="_blank">现有98款鲜花、37款蛋糕。快来订购吧！</a></div>
+        </div>
+        <div class="buy-data cc">
+            <a href="" target="_blank" class="linkImg first">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="145" height="145" />
+                <strong>
+                    <p class="tx-hide tit">测试测试测试测试测试测试测试测试测试测试测试测</p>
+                    <p class="tx-hide money">西子价：￥199.9</p>
+                </strong>
+            </a>
+
+        </div>
+    </div><!-- end partBox2 -->
+
+</div><!-- end part8 -->
+<div id="part9" data-target="0" class="part9 ">
+    <div class="partBox2 so">
+        <div class="pb2-h cc">
+            <div class="pb2-h-t fl">
+                <span class="zh yh">跳蚤市场</span>
+                <span class="en">The flea market</span>
+                <span class="phone" onmouseover="$(this).find('.code').show()" onmouseout="$(this).find('.code').hide()"><img class="m-phone" src="images/phone.jpg" width="21" height="26" />手机版<img src="images/ma.jpg" class="code"/></span>
+            </div>
+            <div class="pb2-h-r fr"><a href="" target="_blank">已有 <label>84159</label> 位网友发布交易信息！</a></div>
+        </div>
+        <div class="so-data cc">
+            <a href="" target="_blank" class="linkImg first">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+            <a href="" target="_blank" class="linkImg">
+                <img data-original="http://bbsimg.xizi.com/attachments/pushpic/20150114010007.jpg" width="130" height="95" />
+                <strong>
+                    <p class="tx-hide tit1">Imax电影票Imax电影票Imax电影票Imax电影票</p>
+                    <p class="tx-hide tit2">凯狮影院2张100元凯狮影院2张100元凯狮影院2张100元凯狮影院2张100元</p>
+                </strong>
+            </a>
+
+
+
+        </div>
+    </div><!-- end partBox2 -->
+
+</div><!-- end part9 -->
+<div id="part10" data-target="0" class="part10 ">
+    <div class="partBox2 public">
+        <div class="pb2-h cc">
+            <div class="pb2-h-t fl">
+                <span class="zh yh">公用信息查询</span>
+                <span class="en">The public information query</span>
+            </div>
+            <div class="pb2-h-r fr"></div>
+        </div>
+        <div class="public-data cc">
+            <div class="bd">
+                <dl class="conve_item i1 clearfix">
+                    <dt>
+                        缴费
+                    </dt>
+                    <dd>
+                        <p><a rel="nofollow" href="http://gd.ct10000.com/hz/" target="_blank">电信话费</a><a rel="nofollow" href="http://www.gd.chinamobile.com/hz/" target="_blank">移动话费</a><a rel="nofollow" href="http://www.10010.com" target="_blank">联通话费</a></p>
+                        <p><a rel="nofollow" href="http://www.10050.net" target="_blank">铁通话费</a><a rel="nofollow" href="http://www.huizhou.gov.cn/dljcx.shtml" target="_blank">电费</a><a rel="nofollow" href="http://www.hzgas.com/cn/index.html" target="_blank">燃气费</a><a rel="nofollow" href="http://www.hzwater.gd.cn/webservice.php?pid=4&amp;title=%CB%AE%B7%D1%B2%E9%D1%AF" target="_blank">水费</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i2 clearfix">
+                    <dt>
+                        生活
+                    </dt>
+                    <dd>
+                        <p><a href="http://bbs.xizi.com/thread-2877366-1-1.html" target="_blank">婚姻登记</a><a rel="nofollow" href="http://www.huizhou.gov.cn/cjfw_marry.shtml" target="_blank">办理户籍</a></p>
+                        <p><a rel="nofollow" href="http://www.huizhou.gov.cn/cjfw_marry.shtml" target="_blank">生育</a> <a rel="nofollow" href="http://wsbs.huizhou.gov.cn/portal/serviceSubject/eventFormList.seam?selectedMenu=1&amp;code=root_gr_sjfl_tx&amp;cid=111699" target="_blank">退休</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i3 clearfix">
+                    <dt>
+                        查询
+                    </dt>
+                    <dd>
+                        <p><a rel="nofollow" href="http://hz.gdltax.gov.cn/" target="_blank">地税</a> <a rel="nofollow" href="http://www.gd-n-tax.gov.cn/pub/001012/" target="_blank">国税</a><a rel="nofollow" href="http://www.gdltax.gov.cn/portal/fzgb/hz/NKAQW2HU0RU0D3CFP2DPJWWKHPKAEEIX.htm" target="_blank">发票</a></p>
+                        <p><a rel="nofollow" href="http://www.kuaidi100.com/" target="_blank">快递</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i4 clearfix">
+                    <dt>
+                        交通
+                    </dt>
+                    <dd>
+                        <p><a class="ilink" target="_blank" href="http://hm.xizi.com/hzjj">查交通违章</a><a rel="nofollow" href="http://www.gdhzcgs.com/cgs/html/hall/index.html" target="_blank">查驾驶证</a></p>
+                        <p><a target="_blank" href="http://hm.xizi.com/hzjj">办事查询</a><a target="_blank" href="http://hm.xizi.com/?m=government&amp;c=shops&amp;a=messages&amp;sid=652">问彭警官</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i5 clearfix">
+                    <dt>
+                        申报
+                    </dt>
+                    <dd>
+                        <p><a rel="nofollow" href="http://www.hzga.gov.cn/e/action/ListInfo/?classid=189" target="_blank">出国签证</a><a rel="nofollow" href="http://wsbs.huizhou.gov.cn/portal/serviceSubject/subjectFormList.seam?code=root_gr_ztfl_crj&amp;selectedMenu=1" target="_blank">港澳通行证</a></p>
+                        <p><a href="http://110.xizi.com/" target="_blank">公安业务</a><a rel="nofollow" href="http://183.63.1.206:8088/home/" target="_blank">消防安全</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i6 clearfix">
+                    <dt>
+                        社保
+                    </dt>
+                    <dd>
+                        <p><a rel="nofollow" href="http://113.106.218.163:8001/grcx/" target="_blank">社保查询</a><a rel="nofollow" href="http://www.huizhou.gov.cn/gjjcx.shtml" target="_blank">住房公积金</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i7 clearfix">
+                    <dt>
+                        房产
+                    </dt>
+                    <dd>
+                        <p><a href="http://house.xizi.com/index.php?m=house&amp;c=index&amp;a=list_house" target="_blank">房源信息查询</a><a rel="nofollow" href="http://wsbs.huizhou.gov.cn/portal/serviceSubject/eventFormList.seam?selectedMenu=1&amp;code=root_gr_sjfl_mfz&amp;cid=111505" target="_blank">购房流程</a></p>
+                        <p><a class="ilink" target="_blank" href="http://so.xizi.com/index.php?m=bbs&amp;cateid=3&amp;allmodelid=1">票务、搬家、租车、维修</a></p>
+                    </dd>
+                </dl>
+                <dl class="conve_item i8 clearfix">
+                    <dt>
+                        汽车
+                    </dt>
+                    <dd>
+                        <p><a href="http://to.xizi.com/qiyun" target="_blank">惠州汽运站发车时间</a></p>
+                        <p><a class="ilink" rel="nofollow" target="_blank" href="http://www.hzhjl.com">航班查询订票</a></p>
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+    </div><!-- end partBox2 -->
+
+</div><!-- end part10 -->
+
+<div class="pageAD1 mt0">
+    <div class="adBig">
+        <a href="">
+            <img data-original="" width="1000" height="80" />
+        </a>
+    </div>
 </div>
+
+<div id="part11" data-target="0" class="part11 ">
+<div id="club_box">
+<ul class="cc" style="position: relative; height: 740px;">
+<li class="club_items w21 cc" style="position: absolute; top: 0px; left: 0px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-1-1.html">惠州事</a><span class="count">(今日帖: <em class="forum_tpost" val="21">*</em>)</span></h2>
+        <h3 class="club_logo club21"><a target="_blank" href="http://bbs.xizi.com/forum-1-1.html">惠州事</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-1-1.html" target="_blank">惠城窗口</a>
+        <a href="http://bbs.xizi.com/forum-99-1.html" target="_blank">惠阳/大亚湾</a>
+        <a href="http://bbs.xizi.com/forum-96-1.html" target="_blank">仲恺窗口</a>
+        <a href="http://bbs.xizi.com/forum-100-1.html" target="_blank">博罗窗口</a>
+        <a href="http://bbs.xizi.com/forum-101-1.html" target="_blank">惠东窗口</a>
+        <a href="http://bbs.xizi.com/forum-102-1.html" target="_blank">龙门窗口</a>
+        <a href="http://bbs.xizi.com/forum-192-1.html" target="_blank">网民问政</a>
+        <a href="http://bbs.xizi.com/forum-759-1.html" target="_blank">315专版</a>
+    </div>
+</li>
+
+<li class="club_items w217 cc" style="position: absolute; top: 0px; left: 199px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-161-1.html">房产</a><span class="count">(今日帖: <em class="forum_tpost" val="217">*</em>)</span></h2>
+        <h3 class="club_logo club217"><a target="_blank" href="http://bbs.xizi.com/forum-161-1.html">房产</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a target="_blank" href="http://bbs.xizi.com/forum-161-1.html">社区家园</a>
+        <a target="_blank" href="http://bbs.xizi.com/forum-40-1.html">谈房论市</a>
+        <a target="_blank" href="http://bbs.xizi.com/forum-725-1.html">活动专区</a>
+    </div>
+</li>
+
+<li class="club_items w218 cc" style="position: absolute; top: 0px; left: 398px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-83-1.html">家居</a><span class="count">(今日帖: <em class="forum_tpost" val="218">*</em>)</span></h2>
+        <h3 class="club_logo club218"><a target="_blank" href="http://bbs.xizi.com/forum-83-1.html">家居</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-83-1.html" target="_blank">装修大本营</a>
+        <a href="http://bbs.xizi.com/forum-726-1.html" target="_blank">装饰公司汇</a>
+        <a href="http://bbs.xizi.com/forum-246-1.html" target="_blank">家具家电</a>
+    </div>
+</li>
+
+<li class="club_items w219 cc" style="position: absolute; top: 0px; left: 597px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-163-1.html">汽车</a><span class="count">(今日帖: <em class="forum_tpost" val="219">*</em>)</span></h2>
+        <h3 class="club_logo club219"><a target="_blank" href="http://bbs.xizi.com/forum-163-1.html">汽车</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-163-1.html" target="_blank">车天车地</a>
+        <a href="http://bbs.xizi.com/forum-273-1.html" target="_blank">我要学车</a>
+    </div>
+</li>
+
+<li class="club_items w220 cc" style="position: absolute; top: 148px; left: 0px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-90-1.html">美食</a><span class="count">(今日帖: <em class="forum_tpost" val="220">*</em>)</span></h2>
+        <h3 class="club_logo club220"><a target="_blank" href="http://bbs.xizi.com/forum-90-1.html">美食</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-90-1.html" target="_blank">以食为天</a>
+        <a href="http://bbs.xizi.com/forum-172-1.html" target="_blank">西子厨房</a>
+        <a href="http://bbs.xizi.com/thread.php?fid=729&search=img" target="_blank">随手拍美食</a>
+        <a href="http://bbs.xizi.com/forum-243-1.html" target="_blank">惠阳美食</a>
+    </div>
+    <div class="clubs_ad">
+        <!----><a target="_blank" href="http://bbs.xizi.com/thread-3250959-1-1.html"><img alt="百吃不厌的香葱肉松卷，看着都忍不住舔屏了" width="195" height="140" data-original="http://bbsimg.xizi.com/attachments/pushpic/20140916020308.jpg"></a><!---->
+    </div>
+</li>
+
+<li class="club_items w223 cc" style="position: absolute; top: 0px; left: 796px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://baby.xizi.com">妈宝</a><span class="count">(今日帖: <em class="forum_tpost" val="223">*</em>)</span></h2>
+        <h3 class="club_logo club223"><a target="_blank" href="http://baby.xizi.com">亲子</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-195-1.html" target="_blank">家长汇</a>
+        <a href="http://bbs.xizi.com/forum-89-1.html" target="_blank">妈妈育婴</a>
+        <a href="http://bbs.xizi.com/thread.php?fid=721&search=img" target="_blank">宝宝影像馆</a>
+    </div>
+</li>
+
+<li class="club_items w127 cc" style="position: absolute; top: 148px; left: 398px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-86-1.html">帮帮团</a><span class="count">(今日帖: <em class="forum_tpost" val="127">*</em>)</span></h2>
+        <h3 class="club_logo club127"><a target="_blank" href="http://bbs.xizi.com/forum-86-1.html">帮帮团</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-86-1.html" target="_blank">惠州知道</a>
+        <a href="http://bbs.xizi.com/forum-211-1.html" target="_blank">失物招领</a>
+        <a href="http://bbs.xizi.com/forum-176-1.html" target="_blank">心理咨询</a>
+        <a href="http://bbs.xizi.com/forum-129-1.html" target="_blank">律师帮帮团</a>
+    </div>
+</li>
+
+<li class="club_items w224 cc" style="position: absolute; top: 148px; left: 597px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-30-1.html">摄影坊</a><span class="count">(今日帖: <em class="forum_tpost" val="224">*</em>)</span></h2>
+        <h3 class="club_logo club224"><a target="_blank" href="http://bbs.xizi.com/forum-30-1.html">摄影坊</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-30-1.html" target="_blank">人像摄影</a>
+        <a href="http://bbs.xizi.com/forum-79-1.html" target="_blank">生态摄影</a>
+        <a href="http://bbs.xizi.com/forum-80-1.html" target="_blank">纪实摄影</a>
+        <a href="http://bbs.xizi.com/forum-262-1.html" target="_blank">学摄影</a>
+        <a href="http://bbs.xizi.com/forum-232-1.html" target="_blank">摄影器材交流</a>
+    </div>
+</li>
+
+<li class="club_items w222 cc" style="position: absolute; top: 148px; left: 796px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://marry.xizi.com">我要结婚</a><span class="count">(今日帖: <em class="forum_tpost" val="222">*</em>)</span></h2>
+        <h3 class="club_logo club222"><a target="_blank" href="http://marry.xizi.com">我要结婚</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-137-1.html" target="_blank">谈婚论嫁</a>
+        <a href="http://bbs.xizi.com/forum-261-1.html" target="_blank">幸福剪影</a>
+        <a href="http://bbs.xizi.com/forum-723-1.html" target="_blank">婚后生活</a>
+    </div>
+    <div class="clubs_ad">
+        <!----><a target="_blank" href="http://bbs.xizi.com/thread-3252928-1-1.html"><img alt="把幸福写在脸上，寻找西子超级“夫妻相”" width="195" height="180" data-original="http://bbsimg.xizi.com/attachments/pushpic/20140916085442.jpg"></a><!---->
+    </div>
+</li>
+
+<li class="club_items w229 cc" style="position: absolute; top: 296px; left: 0px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-120-1.html">兴趣圈</a><span class="count">(今日帖: <em class="forum_tpost" val="229">*</em>)</span></h2>
+        <h3 class="club_logo club229"><a target="_blank" href="http://bbs.xizi.com/forum-120-1.html">兴趣圈</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-120-1.html" target="_blank">西子茶友会</a>
+        <a href="http://bbs.xizi.com/forum-204-1.html" target="_blank">花草鱼虫</a>
+        <a href="http://bbs.xizi.com/forum-77-1.html" target="_blank">宠物秀场</a>
+        <a href="http://bbs.xizi.com/forum-170-1.html" target="_blank">收藏之家</a>
+    </div>
+</li>
+
+<li class="club_items w37 cc" style="position: absolute; top: 296px; left: 199px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-44-1.html">运动圈</a><span class="count">(今日帖: <em class="forum_tpost" val="37">*</em>)</span></h2>
+        <h3 class="club_logo club37"><a target="_blank" href="http://bbs.xizi.com/forum-44-1.html">运动圈</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-44-1.html" target="_blank">羽毛球</a>
+        <a href="http://bbs.xizi.com/forum-45-1.html" target="_blank">足球</a>
+        <a href="http://bbs.xizi.com/forum-46-1.html" target="_blank">篮球</a>
+        <a href="http://bbs.xizi.com/forum-171-1.html" target="_blank">泳无止境</a>
+        <a href="http://bbs.xizi.com/forum-47-1.html" target="_blank">乒乓球</a>
+        <a href="http://bbs.xizi.com/forum-50-1.html" target="_blank">网球</a>
+        <a href="http://bbs.xizi.com/forum-49-1.html" target="_blank">舞蹈</a>
+        <a href="http://bbs.xizi.com/forum-197-1.html" target="_blank">台球世界</a>
+        <a href="http://bbs.xizi.com/forum-48-1.html" target="_blank">体育大观园</a>
+    </div>
+</li>
+
+<li class="club_items w225 cc" style="position: absolute; top: 296px; left: 398px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-27-1.html">旅游户外</a><span class="count">(今日帖: <em class="forum_tpost" val="225">*</em>)</span></h2>
+        <h3 class="club_logo club225"><a target="_blank" href="http://bbs.xizi.com/forum-27-1.html">旅游户外</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-27-1.html" target="_blank">驴行天下</a>
+        <a href="http://bbs.xizi.com/forum-724-1.html" target="_blank">休闲旅游</a>
+        <a href="http://bbs.xizi.com/forum-63-1.html" target="_blank">西子车友会</a>
+        <a href="http://bbs.xizi.com/forum-168-1.html" target="_blank">骑行一族</a>
+        <a href="http://bbs.xizi.com/forum-124-1.html" target="_blank">渔人码头</a>
+        <a href="http://bbs.xizi.com/forum-125-1.html" target="_blank">航模天地</a>
+    </div>
+</li>
+
+<li class="club_items w64 cc" style="position: absolute; top: 296px; left: 597px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-9-1.html">情感</a><span class="count">(今日帖: <em class="forum_tpost" val="64">*</em>)</span></h2>
+        <h3 class="club_logo club64"><a target="_blank" href="http://bbs.xizi.com/forum-9-1.html">情感</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-174-1.html" target="_blank">家庭琐事</a>
+        <a href="http://bbs.xizi.com/forum-209-1.html" target="_blank">致青春</a>
+        <a href="http://bbs.xizi.com/forum-55-1.html" target="_blank">人在他乡</a>
+        <a href="http://bbs.xizi.com/forum-9-1.html" target="_blank">心情咖啡屋</a>
+        <a href="http://bbs.xizi.com/forum-81-1.html" target="_blank">缘来是你</a>
+    </div>
+</li>
+
+<li class="club_items w266 cc" style="position: absolute; top: 444px; left: 0px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-97-1.html">文化</a><span class="count">(今日帖: <em class="forum_tpost" val="266">*</em>)</span></h2>
+        <h3 class="club_logo club266"><a target="_blank" href="http://bbs.xizi.com/forum-97-1.html">文化</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-97-1.html" target="_blank">家乡风情</a>
+        <a href="http://bbs.xizi.com/forum-237-1.html" target="_blank">惠州文化</a>
+        <a href="http://bbs.xizi.com/forum-33-1.html" target="_blank">西湖文苑</a>
+        <a href="http://bbs.xizi.com/forum-757-1.html" target="_blank">惠州汉服</a>
+    </div>
+</li>
+
+<li class="club_items w221 cc" style="position: absolute; top: 444px; left: 199px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://lady.xizi.com">爱美丽</a><span class="count">(今日帖: <em class="forum_tpost" val="221">*</em>)</span></h2>
+        <h3 class="club_logo club221"><a target="_blank" href="http://lady.xizi.com">时尚</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-66-1.html" target="_blank">服饰美容</a>
+        <a href="http://bbs.xizi.com/forum-231-1.html" target="_blank">我的男友</a>
+        <a href="http://bbs.xizi.com/forum-260-1.html" target="_blank">购物分享</a>
+        <a href="http://bbs.xizi.com/forum-196-1.html" target="_blank">创意手工坊</a>
+        <a href="http://bbs.xizi.com/forum-270-1.html" target="_blank">私影街拍</a>
+    </div>
+    <div class="clubs_ad">
+        <!----><a target="_blank" href="http://bbs.xizi.com/thread-3253132-1-1.html"><img alt="超模大赛海报拍摄花絮，惠州妹子真心棒" width="195" height="140" data-original="http://bbsimg.xizi.com/attachments/pushpic/20140916023720.jpg"></a><!---->
+    </div>
+</li>
+
+<li class="club_items w227 cc" style="position: absolute; top: 444px; left: 597px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-73-1.html">公益</a><span class="count">(今日帖: <em class="forum_tpost" val="227">*</em>)</span></h2>
+        <h3 class="club_logo club227"><a target="_blank" href="http://bbs.xizi.com/forum-73-1.html">公益</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-73-1.html" target="_blank">西子公益</a>
+        <a href="http://bbs.xizi.com/forum-271-1.html" target="_blank">公益沙龙</a>
+        <a href="http://bbs.xizi.com/forum-272-1.html" target="_blank">互帮互助</a>
+    </div>
+</li>
+
+<li class="club_items w267 cc" style="position: absolute; top: 444px; left: 796px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-60-1.html">电影</a><span class="count">(今日帖: <em class="forum_tpost" val="267">*</em>)</span></h2>
+        <h3 class="club_logo club267"><a target="_blank" href="http://bbs.xizi.com/forum-60-1.html">电影</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-60-1.html" target="_blank">西子梦工厂</a>
+        <a href="http://bbs.xizi.com/forum-722-1.html" target="_blank">惠州微电影</a>
+    </div>
+</li>
+
+<li class="club_items w263 cc" style="position: absolute; top: 592px; left: 0px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-264-1.html">校园</a><span class="count">(今日帖: <em class="forum_tpost" val="263">*</em>)</span></h2>
+        <h3 class="club_logo club263"><a target="_blank" href="http://bbs.xizi.com/forum-264-1.html">校园</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-264-1.html" target="_blank">校园那些事</a>
+        <a href="http://bbs.xizi.com/forum-19-1.html" target="_blank">教师家园</a>
+    </div>
+</li>
+
+<li class="club_items w24 cc" style="position: absolute; top: 592px; left: 199px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-88-1.html">休闲一刻</a><span class="count">(今日帖: <em class="forum_tpost" val="24">*</em>)</span></h2>
+        <h3 class="club_logo club24"><a target="_blank" href="http://bbs.xizi.com/forum-88-1.html">休闲一刻</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-88-1.html" target="_blank">娱乐八卦</a>
+        <a href="http://bbs.xizi.com/forum-34-1.html" target="_blank">网友相册</a>
+        <!--<a href="http://bbs.xizi.com/forum-25-1.html" target="_blank">疯狂贴图</a>-->
+        <a href="http://bbs.xizi.com/forum-62-1.html" target="_blank">动漫游戏</a>
+        <!-- <a href="http://bbs.xizi.com/forum-5-1.html" target="_blank">纯属搞笑</a>-->
+        <a href="http://bbs.xizi.com/forum-31-1.html" target="_blank">灌纯净水</a>
+        <a href="http://bbs.xizi.com/forum-4-1.html" target="_blank">音乐无线</a>
+        <a href="http://bbs.xizi.com/forum-178-1.html" target="_blank">星座魔法屋</a>
+    </div>
+</li>
+
+<li class="club_items w28 cc" style="position: absolute; top: 592px; left: 398px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-98-1.html">交流驿站</a><span class="count">(今日帖: <em class="forum_tpost" val="28">*</em>)</span></h2>
+        <h3 class="club_logo club28"><a target="_blank" href="http://bbs.xizi.com/forum-98-1.html">交流驿站</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-98-1.html" target="_blank">上班这些事</a>
+        <a href="http://bbs.xizi.com/forum-42-1.html" target="_blank">创业之路</a>
+        <a href="http://bbs.xizi.com/forum-14-1.html" target="_blank">数码科技</a>
+        <a href="http://bbs.xizi.com/forum-136-1.html" target="_blank">投资理财</a>
+        <a href="http://bbs.xizi.com/forum-32-1.html" target="_blank">艺术&amp;设计</a>
+        <a href="http://bbs.xizi.com/forum-39-1.html" target="_blank">English Corner</a>
+    </div>
+</li>
+
+<li class="club_items w268 cc" style="position: absolute; top: 592px; left: 597px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-205-1.html">西子卡</a><span class="count">(今日帖: <em class="forum_tpost" val="268">*</em>)</span></h2>
+        <h3 class="club_logo club268"><a target="_blank" href="http://bbs.xizi.com/forum-205-1.html">西子卡</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-205-1.html" target="_blank">西小卡问答</a>
+    </div>
+</li>
+
+<li class="club_items w41 cc" style="position: absolute; top: 592px; left: 796px;">
+    <div class="clubs_hd">
+        <h2 class="club_name"><a target="_blank" href="http://bbs.xizi.com/forum-16-1.html">站务室</a><span class="count">(今日帖: <em class="forum_tpost" val="41">*</em>)</span></h2>
+        <h3 class="club_logo club41"><a target="_blank" href="http://bbs.xizi.com/forum-16-1.html">站务室</a></h3>
+    </div>
+    <div class="clubs_list cc">
+        <a href="http://bbs.xizi.com/forum-16-1.html" target="_blank">网友服务区</a>
+        <a href="http://bbs.xizi.com/forum-244-1.html" target="_blank">商家活动</a>
+        <a href="http://bbs.xizi.com/forum-75-1.html" target="_blank">认证版</a>
+    </div>
+</li>
+</ul>
+</div>
+</div><!-- end part11 -->
+
+<div class="footer">
+    <p>
+        <span class="copyright">Copyright &copy; 2002-2014 <abbr title="惠州西子湖畔网络有限公司"><a href="http://www.xizi.com/" target="_blank">西子湖畔</a></abbr> 版权所有</span>　|　常年法律顾问：<a href="http://www.gdweilun.com" target="_blank" rel="nofollow">广东伟伦律师事务所</a> 杨健华律师、谢志坚律师</p>
+</div>
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/rotator.js"></script>
+<script src="js/jquery.lazyload.min.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
